@@ -1,0 +1,13 @@
+﻿1- json serialize
+2- GridViewColumn
+3- data to btn in GridViewColumn
+4- multiBinding and converters
+5- working with comboBoxes
+6- var Result = MessageBox.Show("This Seat is Available, Would you like to pick it?", "Would you like this seat?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show("it was yes");
+                } else
+                {
+                    MessageBox.Show("it was no");
+                }

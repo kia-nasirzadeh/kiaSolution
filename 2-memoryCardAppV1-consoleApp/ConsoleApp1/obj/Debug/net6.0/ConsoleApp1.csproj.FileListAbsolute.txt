@@ -1,0 +1,14 @@
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.exe
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.deps.json
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.runtimeconfig.json
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ref\ConsoleApp1.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.pdb
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.pdb
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.genruntimeconfig.cache

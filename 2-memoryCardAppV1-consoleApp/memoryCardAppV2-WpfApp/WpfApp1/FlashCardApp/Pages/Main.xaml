@@ -1,0 +1,84 @@
+﻿<Window x:Class="WpfApp1.FlashCardApp.Main" Name="xbody"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.FlashCardApp"
+        xmlns:UserControls="clr-namespace:WpfApp1.FlashCardApp.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Background="#DDDFDF">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="timeLineLabel">
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="red"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            <Style TargetType="Label" x:Key="timeLineLabelBottom">
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition Width="1.4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <UserControls:MainTopMenu Grid.Row="0" Grid.ColumnSpan="2" />
+        <DockPanel Grid.Row="0" Grid.Column="2"
+                   LastChildFill="False"
+                   Background="#ABB0B0" >
+            <Button DockPanel.Dock="Left" Click="undo_Click"
+                    Padding="6" Margin="10"
+                    Content="undo" />
+            <Label DockPanel.Dock="Right" Name="remainingQuestionLabel"
+                   HorizontalContentAlignment="Right"
+                   VerticalContentAlignment="Center"/>
+        </DockPanel>
+        <Label Grid.Row="1" Grid.Column="0" x:Name="questionBox"
+               BorderThickness="0"
+               BorderBrush="#ABB0B0"
+               Background="#EAEBEB"
+               FontSize="17.5"
+               Content="hello"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="answerBox"
+                 Padding="2"
+                 FontSize="25"
+                 BorderBrush="#ABB0B0"
+                 BorderThickness="5 0 0 0"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Visible"
+                 AcceptsReturn="True"
+                 Background="#EAEBEB"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="dbAnswerBox"
+                 Padding="2"
+                 FontSize="25"
+                 TextWrapping="Wrap"
+                 Background="#EAEBEB"/>
+        <UniformGrid Grid.Row="2" Grid.ColumnSpan="3"
+                     Columns="4">
+            <Button Content="show answer (1)" x:Name="showBtn"
+                    Background="{StaticResource info}"/>
+            <Button Content="answered right (2)" x:Name="answeredBtn"
+                    Background="{StaticResource success}"/>
+            <Button Content="wrong answer :) (3)" x:Name="failedBtn"
+                    Background="{StaticResource danger}"/>
+            <Button Content="manage this flash card (4)" x:Name="manageBtn"
+                    Background="{StaticResource faded}"/>
+        </UniformGrid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+            <UserControls:TimeLine x:Name="userControlsTimeLine" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,105 @@
+﻿<Window x:Class="WpfApp1.FlashCardApp.TableManager" Name="xbody"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.FlashCardApp"
+        mc:Ignorable="d"
+        Title="TableManager" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Bottom"
+               Content="Question:"/>
+        <Label Grid.Row="0" Grid.Column="1"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Bottom"
+               Content="Answer:"/>
+        <TextBox Grid.Row="1" Grid.Column="0" x:Name="questionBox"
+                 Padding="10"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 AcceptsReturn="True"
+                 Margin="10"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="answerBox"
+                 Padding="10"
+                 Margin="10"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 AcceptsReturn="True"/>
+        <UniformGrid Grid.Row="1" Grid.Column="2" Rows="3" Margin="10">
+            <Button DockPanel.Dock="Top" x:Name="save"
+                    Background="{StaticResource primary}"
+                    Content="save"/>
+            <Button DockPanel.Dock="Top" x:Name="update"
+                    Background="{StaticResource warning}"
+                    Content="update"/>
+            <Button DockPanel.Dock="Top" x:Name="delete"
+                    Background="{StaticResource danger}"
+                    Content="delete"/>
+        </UniformGrid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <DockPanel>
+                <TextBlock Text="search:"
+                           Padding="5"/>
+                <TextBox x:Name="search"
+                         VerticalContentAlignment="Center"/>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="10">
+            <DockPanel LastChildFill="False" >
+                <Button DockPanel.Dock="Left" x:Name="ASCButton"
+                        Content="sort by date ASC" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
+                <Button DockPanel.Dock="Left" x:Name="DESCButton"
+                        Content="sort by date DESC" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="4" Grid.ColumnSpan="3">
+            <ScrollViewer>
+                <ListView x:Name="questionsListView"
+                          SelectionChanged="TableManagerSelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="2 0 0 0"/>
+                            <Setter Property="Background" Value="{StaticResource faded}"/>
+                            <Setter Property="Margin" Value="0 0 0 5"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Question}" />
+                            <GridViewColumn Header="Answer" DisplayMemberBinding="{Binding Answer}" />
+                            <GridViewColumn Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
+                            <GridViewColumn Header="Operations">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="edit" Click="EditBtnClicked"
+                                                Padding="5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
