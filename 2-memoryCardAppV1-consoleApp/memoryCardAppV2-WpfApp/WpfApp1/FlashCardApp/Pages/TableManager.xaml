@@ -81,6 +81,7 @@
                             <Setter Property="Background" Value="{StaticResource faded}"/>
                             <Setter Property="Margin" Value="0 0 0 5"/>
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="MaxHeight" Value="45" />
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
