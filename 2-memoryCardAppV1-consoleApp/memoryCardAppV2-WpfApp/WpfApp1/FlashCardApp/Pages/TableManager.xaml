@@ -68,6 +68,14 @@
                         Content="sort by date DESC" 
                         Margin="0 0 10 0"
                         Padding="5"/>
+                <Button DockPanel.Dock="Right" x:Name="abDirBtn"
+                        Content="answerBox Direction" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
+                <Button DockPanel.Dock="Right" x:Name="qbDirBtn"
+                        Content="questionBox Direction" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="3">
