@@ -28,6 +28,14 @@ namespace WpfApp1.FlashCardApp
             xbody.Loaded += (s, e) => { questionBox.Focus(); };
             xbody.Loaded += HandleEvents;
             DbFunctions.Paginate();
+            // set up question box direction from app settings:
+            bool qbOldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "questionBoxDir");
+            if (qbOldDir) questionBox.FlowDirection = FlowDirection.LeftToRight;
+            else questionBox.FlowDirection = FlowDirection.RightToLeft;
+            // set up answer box direction from app settings:
+            bool abOldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "answerBoxDir");
+            if (abOldDir) answerBox.FlowDirection = FlowDirection.LeftToRight;
+            else answerBox.FlowDirection = FlowDirection.RightToLeft;
         }
         void HandleEvents (object sender, RoutedEventArgs e)
         {
@@ -46,12 +54,21 @@ namespace WpfApp1.FlashCardApp
             {
                 case "save":
                     DbFunctions.CreateQuestion();
+                    questionBox.Focus();
+                    questionBox.Text = "";
+                    answerBox.Text = "";
                     break;
                 case "update":
                     DbFunctions.UpdateQuestion();
+                    questionBox.Focus();
+                    questionBox.Text = "";
+                    answerBox.Text = "";
                     break;
                 case "delete":
                     DbFunctions.DeleteQuestion();
+                    questionBox.Focus();
+                    questionBox.Text = "";
+                    answerBox.Text = "";
                     break;
                 case "ASCButton":
                     DbFunctions.ASCButton_Click();
@@ -59,6 +76,13 @@ namespace WpfApp1.FlashCardApp
                 case "DESCButton":
                     DbFunctions.DESCButton_Click();
                     break;
+                case "qbDirBtn":
+                    qbChangeDir();
+                    break;
+                case "abDirBtn":
+                    abChangeDir();
+                    break;
+
 
             }
         }
@@ -73,7 +97,21 @@ namespace WpfApp1.FlashCardApp
         {
             DbFunctions.TableManagerSelectionChanged(sender, e);
         }
-
-
+        void qbChangeDir ()
+        {
+            bool oldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "questionBoxDir");
+            if (oldDir) questionBox.FlowDirection = FlowDirection.RightToLeft;
+            else questionBox.FlowDirection = FlowDirection.LeftToRight;
+            KiaSolution.AppSettings.AppSettings.ChangeAppSettings_qbDir();
+            questionBox.Focus();
+        }
+        void abChangeDir ()
+        {
+            bool oldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "answerBoxDir");
+            if (oldDir) answerBox.FlowDirection = FlowDirection.RightToLeft;
+            else answerBox.FlowDirection = FlowDirection.LeftToRight;
+            KiaSolution.AppSettings.AppSettings.ChangeAppSettings_abDir();
+            answerBox.Focus();
+        }
     }
 }

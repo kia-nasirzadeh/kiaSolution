@@ -11,3 +11,4 @@
                 {
                     MessageBox.Show("it was no");
                 }
+7- how to read a json file?
