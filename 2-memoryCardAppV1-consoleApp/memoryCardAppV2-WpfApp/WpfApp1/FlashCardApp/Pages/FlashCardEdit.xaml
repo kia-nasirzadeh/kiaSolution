@@ -39,8 +39,8 @@
                Style="{StaticResource labels}"
                Content="timeLine"/>
         <Label Grid.Row="0" Grid.Column="1" x:Name="datesLabel"/>
-        <Label Grid.Row="1" Grid.Column="1" x:Name="questionLabel"/>
-        <Label Grid.Row="2" Grid.Column="1" x:Name="answerLabel"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="questionLabel"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="answerLabel"></TextBox>
         <Grid Grid.Row="3" Grid.Column="1" x:Name="timeLineLabel">
             <UserControls:TimeLine x:Name="userControlsTimeLine" />
         </Grid>

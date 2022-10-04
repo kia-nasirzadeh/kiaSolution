@@ -82,15 +82,13 @@ namespace WpfApp1.FlashCardApp
                 case "abDirBtn":
                     abChangeDir();
                     break;
-
-
             }
         }
         // declare partial methods:
         public void EditBtnClicked(object sender, RoutedEventArgs e)
         {
             var boundData = (FlashCard)((Button)sender).DataContext;
-            FlashCardEdit fce = new(boundData);
+            FlashCardEdit fce = new(boundData, this);
             fce.Show();
         }
         void TableManagerSelectionChanged(object sender, RoutedEventArgs e)
@@ -112,6 +110,10 @@ namespace WpfApp1.FlashCardApp
             else answerBox.FlowDirection = FlowDirection.LeftToRight;
             KiaSolution.AppSettings.AppSettings.ChangeAppSettings_abDir();
             answerBox.Focus();
+        }
+        public void Paginate ()
+        {
+            DbFunctions.Paginate();
         }
     }
 }

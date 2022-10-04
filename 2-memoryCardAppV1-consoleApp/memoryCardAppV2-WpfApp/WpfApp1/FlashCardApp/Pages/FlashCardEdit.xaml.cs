@@ -21,16 +21,17 @@ namespace WpfApp1.FlashCardApp
     public partial class FlashCardEdit : Window
     {
         FlashCard flashCard = new();
-        public FlashCardEdit(FlashCard fc)
+        TableManager tableManagerWindow;
+        public FlashCardEdit(FlashCard fc, TableManager motherTableManager)
         {
             InitializeComponent();
             flashCard = fc;
             WindowState = WindowState.Maximized;
-            questionLabel.Content = fc.Question;
-            answerLabel.Content = fc.Answer;
+            questionLabel.Text = fc.Question;
+            answerLabel.Text = fc.Answer;
             TimeLineFunctions.LogTimeLineOnOutput(TimeLineFunctions.decodeTimeLine(fc.TimeLine));
             userControlsTimeLine.FlashCard = fc;
-
+            tableManagerWindow = motherTableManager;
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -42,8 +43,13 @@ namespace WpfApp1.FlashCardApp
                 try
                 {
                     conn.CreateTable<FlashCard>();
-                    conn.Update(userControlsTimeLine.FlashCard);
+                    flashCard = userControlsTimeLine.FlashCard;
+                    flashCard.Question = questionLabel.Text;
+                    flashCard.Answer = answerLabel.Text;
+                    conn.Update(flashCard);
                     MessageBox.Show("changes saved successfuly", "system info message", MessageBoxButton.OK, MessageBoxImage.Information);
+                    tableManagerWindow.Paginate();
+                    this.Close();
                 }
                 catch (Exception err)
                 {
@@ -51,7 +57,6 @@ namespace WpfApp1.FlashCardApp
                 }
             }
         }
-
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

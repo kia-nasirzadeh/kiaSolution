@@ -99,7 +99,7 @@ namespace WpfApp1.FlashCardApp
         }
         private void ManageFlashCard()
         {
-            FlashCardEdit flashCardEditWindow = new(fco.flashCard!);
+            FlashCardEdit flashCardEditWindow = new(fco.flashCard!, new TableManager());
             flashCardEditWindow.Show();
         }
         private void FailedAnswer()
@@ -137,8 +137,9 @@ namespace WpfApp1.FlashCardApp
                 MessageBox.Show("this is wrong ! :(");
                 return;
             }
-            answerBox.Text = "";
             questionBox.Content = question;
+            answerBox.Text = "";
+            dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;
             answer = fco.GetAnswer();
             total = (string)fco.totalFlashCardsCountForToday.ToString();
