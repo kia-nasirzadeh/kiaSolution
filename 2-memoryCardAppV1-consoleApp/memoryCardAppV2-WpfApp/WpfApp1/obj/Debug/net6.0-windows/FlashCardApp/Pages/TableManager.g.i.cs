@@ -149,7 +149,7 @@ namespace WpfApp1.FlashCardApp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/KiaSolution;V1.0.0.0;component/flashcardapp/pages/tablemanager.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/KiaSolution;component/flashcardapp/pages/tablemanager.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\FlashCardApp\Pages\TableManager.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
