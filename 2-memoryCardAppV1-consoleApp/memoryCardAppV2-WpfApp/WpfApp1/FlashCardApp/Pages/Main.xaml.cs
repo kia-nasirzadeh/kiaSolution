@@ -137,7 +137,7 @@ namespace WpfApp1.FlashCardApp
                 MessageBox.Show("this is wrong ! :(");
                 return;
             }
-            questionBox.Content = question;
+            questionBox.Text = question;
             answerBox.Text = "";
             dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;
@@ -168,7 +168,7 @@ namespace WpfApp1.FlashCardApp
                 return;
             }
             answerBox.Text = "";
-            questionBox.Content = question;
+            questionBox.Text = question;
             userControlsTimeLine.FlashCard = lastFlashCard_;
             answer = lastFlashCard_.Answer!.ToString();
             total = (string)fco.totalFlashCardsCountForToday.ToString();
