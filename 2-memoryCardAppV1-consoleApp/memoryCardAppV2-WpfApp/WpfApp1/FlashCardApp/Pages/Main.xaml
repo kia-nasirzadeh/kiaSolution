@@ -46,12 +46,11 @@
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"/>
         </DockPanel>
-        <Label Grid.Row="1" Grid.Column="0" x:Name="questionBox"
-               BorderThickness="0"
-               BorderBrush="#ABB0B0"
+        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="questionBox"
                Background="#EAEBEB"
-               FontSize="17.5"
-               Content="hello"/>
+               TextWrapping="WrapWithOverflow"
+               FontSize="17.5">
+        </TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="answerBox"
                  Padding="2"
                  FontSize="25"
