@@ -27,6 +27,7 @@ namespace WpfApp1.FlashCardApp
             WindowState = WindowState.Maximized;
             xbody.Loaded += (s, e) => { questionBox.Focus(); };
             xbody.Loaded += HandleEvents;
+            xbody.Loaded += HandleSizes;
             DbFunctions.Paginate();
             // set up question box direction from app settings:
             bool qbOldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "questionBoxDir");
@@ -36,6 +37,13 @@ namespace WpfApp1.FlashCardApp
             bool abOldDir = KiaSolution.AppSettings.AppSettings.GetAppSettings("FlashCardApp", "answerBoxDir");
             if (abOldDir) answerBox.FlowDirection = FlowDirection.LeftToRight;
             else answerBox.FlowDirection = FlowDirection.RightToLeft;
+        }
+        void HandleSizes (object sender, RoutedEventArgs e)
+        {
+            questionCol.Width = questionsListView.ActualWidth / 4.1;
+            answerCol.Width = questionsListView.ActualWidth / 4.1;
+            dateCol.Width = questionsListView.ActualWidth / 4.1;
+            operationCol.Width = questionsListView.ActualWidth / 4.1;
         }
         void HandleEvents (object sender, RoutedEventArgs e)
         {

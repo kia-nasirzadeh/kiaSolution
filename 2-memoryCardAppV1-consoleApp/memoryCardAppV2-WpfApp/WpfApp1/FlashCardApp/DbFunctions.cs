@@ -13,7 +13,7 @@ namespace WpfApp1.FlashCardApp
 {
     public class DbFunctions
     {
-        static int PageSize = 20;
+        static int PageSize = 100;
         static int Page = 1;
         static bool SelectionChangedEnable = true;
         public static TableManager TableManagerWindow;
@@ -103,6 +103,7 @@ namespace WpfApp1.FlashCardApp
                 {
                     conn.CreateTable<FlashCard> ();
                     var flashCards = (from fcs in conn.Table<FlashCard>()
+                                      .OrderByDescending(fcs => fcs.DateModified)
                                       .Skip((Page - 1) * PageSize)
                                       .Take(PageSize)
                                       select fcs).ToList();

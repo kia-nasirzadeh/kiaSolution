@@ -79,7 +79,6 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="3">
-            <ScrollViewer>
                 <ListView x:Name="questionsListView"
                           SelectionChanged="TableManagerSelectionChanged">
                     <ListView.ItemContainerStyle>
@@ -90,14 +89,15 @@
                             <Setter Property="Margin" Value="0 0 0 5"/>
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="MaxHeight" Value="45" />
+                            <Setter Property="VerticalContentAlignment" Value="Top"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Question" DisplayMemberBinding="{Binding Question}" />
-                            <GridViewColumn Header="Answer" DisplayMemberBinding="{Binding Answer}" />
-                            <GridViewColumn Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
-                            <GridViewColumn Header="Operations">
+                            <GridViewColumn x:Name="questionCol" Header="Question" DisplayMemberBinding="{Binding Question}" />
+                            <GridViewColumn x:Name="answerCol" Header="Answer" DisplayMemberBinding="{Binding Answer}" />
+                            <GridViewColumn x:Name="dateCol" Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
+                            <GridViewColumn x:Name="operationCol" Header="Operations">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Content="edit" Click="EditBtnClicked"
@@ -108,7 +108,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </ScrollViewer>
         </Grid>
     </Grid>
 </Window>

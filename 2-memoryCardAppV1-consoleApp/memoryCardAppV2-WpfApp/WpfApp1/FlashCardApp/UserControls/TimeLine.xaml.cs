@@ -121,12 +121,9 @@ namespace WpfApp1.FlashCardApp.UserControls
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            Trace.WriteLine("---------------");
-            Trace.WriteLine(JsonConvert.SerializeObject(values[0]));
             string persianStringifiedDate = JsonConvert.SerializeObject(values[0]);
             
             string timelineDateTime = persianStringifiedDate.ToString();
-            Trace.WriteLine(timelineDateTime);
             string myDateTime = timelineDateTime.Split('T')[0];
             myDateTime = myDateTime.Split('"')[1];
             var year = myDateTime.Split("-")[0];

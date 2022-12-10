@@ -25,7 +25,7 @@ namespace WpfApp1.FlashCardApp
     public partial class Main : Window
     {
         DispatcherTimer timer = new();
-        int timerSeconds = 10;
+        int timerSeconds = 60;
         string question;
         string answer;
         string total;
