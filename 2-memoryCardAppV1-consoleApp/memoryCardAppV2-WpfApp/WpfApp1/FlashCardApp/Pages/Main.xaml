@@ -45,6 +45,13 @@
             <Label DockPanel.Dock="Right" Name="remainingQuestionLabel"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"/>
+            <Label DockPanel.Dock="Left" Name="timerLabel"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   Padding="40 0 40 0"
+                   FontWeight="bold"
+                   FontSize="20"
+                   Background="lime"/>
         </DockPanel>
         <TextBlock Grid.Row="1" Grid.Column="0" x:Name="questionBox"
                Background="#EAEBEB"

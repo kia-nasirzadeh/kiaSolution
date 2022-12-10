@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using SQLite;
 using Newtonsoft.Json;
+using System.Windows.Threading;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -23,6 +24,8 @@ namespace WpfApp1.FlashCardApp
     /// </summary>
     public partial class Main : Window
     {
+        DispatcherTimer timer = new();
+        int timerSeconds = 10;
         string question;
         string answer;
         string total;
@@ -43,6 +46,21 @@ namespace WpfApp1.FlashCardApp
             //// say hello:
             //MessageBox.Show("hello");
             // set focuse:
+            timer.Interval = TimeSpan.FromSeconds(1);
+
+            timer.Tick += (object s, EventArgs e) =>
+            {
+                int currenttime = Int32.Parse(timerLabel.Content.ToString()!);
+                //MessageBox.Show($"1:{currenttime}");
+                currenttime = currenttime - 1;
+                //MessageBox.Show($"2:{currenttime}");
+                timerLabel.Content = currenttime.ToString();
+                if (currenttime < 0)
+                {
+                    EndTimer();
+                    timer.Stop();
+                }
+            };
             answerBox.Focus();
         }
         void HandleEvents (object sender, RoutedEventArgs e)
@@ -144,6 +162,8 @@ namespace WpfApp1.FlashCardApp
             answer = fco.GetAnswer();
             total = (string)fco.totalFlashCardsCountForToday.ToString();
             remainingQuestionLabel.Content = $"{total} :تعداد فلش کارد های باقی مانده امروز";
+            timer.Stop();
+            StartTimer();
         }
         private void InitEmptyFlashCard ()
         {
@@ -173,6 +193,20 @@ namespace WpfApp1.FlashCardApp
             answer = lastFlashCard_.Answer!.ToString();
             total = (string)fco.totalFlashCardsCountForToday.ToString();
             remainingQuestionLabel.Content = $"{total} :تعداد فلش کارد های باقی مانده امروز";
+        }
+        // timer functions
+        private void StartTimer ()
+        {
+            timerLabel.Background = Brushes.Lime;
+            timerLabel.Foreground = Brushes.Black;
+            timerLabel.Content = timerSeconds;
+            timer.Start();
+        }
+        private void EndTimer ()
+        {
+            timerLabel.Background = Brushes.Red;
+            timerLabel.Foreground = Brushes.DarkRed;
+            timerLabel.Content = "0";
         }
     }
     
