@@ -214,5 +214,25 @@ namespace WpfApp1.FlashCardApp
                 }
             }
         }
+        public static void Search (string query)
+        {
+            using (SQLiteConnection conn = new(App.dbPath))
+            {
+                try
+                {
+                    conn.CreateTable<FlashCard>();
+                    var flashCards = (from fcs in conn.Table<FlashCard>()
+                                      where (fcs.Question!.ToLower().Contains(query.ToLower()) || fcs.Answer!.ToLower().Contains(query.ToLower()))
+                                      select fcs).ToList();
+                    SelectionChangedEnable = false;
+                    TableManagerWindow.questionsListView.ItemsSource = flashCards;
+                    SelectionChangedEnable = true;
+                }
+                catch (SQLiteException err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+            }
+        }
     }
 }

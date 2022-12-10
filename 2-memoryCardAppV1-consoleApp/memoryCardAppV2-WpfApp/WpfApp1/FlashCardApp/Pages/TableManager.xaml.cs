@@ -54,7 +54,15 @@ namespace WpfApp1.FlashCardApp
                 button.Click += HandleClickingEvents;
             }
             // handle pressing events:
+            search.KeyUp += Search_KeyUp;
         }
+
+        private void Search_KeyUp(object sender, KeyEventArgs e)
+        {
+            var query = search.Text.ToString();
+            DbFunctions.Search(query);
+        }
+
         void HandleClickingEvents (object sender, RoutedEventArgs e)
         {
             Button senderToButton = (Button)sender;
