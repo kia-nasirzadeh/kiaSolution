@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using SQLite;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace WpfApp1.FlashCardApp.UserControls
 {
@@ -120,9 +121,34 @@ namespace WpfApp1.FlashCardApp.UserControls
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string timelineDateTime = values[0].ToString()!;
-            string myDateTime = timelineDateTime.Split(' ')[0];
-            return myDateTime;
+            Trace.WriteLine("---------------");
+            Trace.WriteLine(JsonConvert.SerializeObject(values[0]));
+            string persianStringifiedDate = JsonConvert.SerializeObject(values[0]);
+            
+            string timelineDateTime = persianStringifiedDate.ToString();
+            Trace.WriteLine(timelineDateTime);
+            string myDateTime = timelineDateTime.Split('T')[0];
+            myDateTime = myDateTime.Split('"')[1];
+            var year = myDateTime.Split("-")[0];
+            var month = myDateTime.Split("-")[1];
+            var day = myDateTime.Split("-")[2];
+            var monthName = "no set";
+            switch (month)
+            {
+                case "01": monthName = "فروردین"; break;
+                case "02": monthName = "اردیبهشت"; break;
+                case "03": monthName = "خرداد"; break;
+                case "04": monthName = "تیر"; break;
+                case "05": monthName = "مرداد"; break;
+                case "06": monthName = "شهریور"; break;
+                case "07": monthName = "مهر"; break;
+                case "08": monthName = "آبان"; break;
+                case "09": monthName = "آذر"; break;
+                case "10": monthName = "دی"; break;
+                case "11": monthName = "بهمن"; break;
+                case "12": monthName = "اسفند"; break;
+            }
+            return year + "/" + month + "/" + day + " | " + monthName;
         }
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
         {

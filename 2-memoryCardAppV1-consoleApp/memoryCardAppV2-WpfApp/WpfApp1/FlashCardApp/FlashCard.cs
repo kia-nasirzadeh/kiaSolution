@@ -7,6 +7,7 @@ using SQLite;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Windows;
+using System.Diagnostics;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -52,6 +53,8 @@ namespace WpfApp1.FlashCardApp
                             timeLine[i].dateTime = new DateTime(persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate));
                         }
                     }
+                    Trace.WriteLine("---------------------");
+                    Trace.WriteLine(JsonConvert.SerializeObject(timeLine));
                     return timeLine;
                 }
                 else return null;
