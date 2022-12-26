@@ -160,8 +160,11 @@ namespace WpfApp1.FlashCardApp
             dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;
             answer = fco.GetAnswer();
-            total = (string)fco.totalFlashCardsCountForToday.ToString();
-            remainingQuestionLabel.Content = $"{total} :تعداد فلش کارد های باقی مانده امروز";
+            var totalRemainingFlashCards = fco.totalFlashCardsCountForToday;
+            total = (string)totalRemainingFlashCards.ToString();
+            var estimatedTotalTime_hour = Math.Floor(totalRemainingFlashCards / (float)60);
+            var estimatedTotalTime_decimal = totalRemainingFlashCards / (float)60 - Math.Floor(totalRemainingFlashCards / (float)60);
+            remainingQuestionLabel.Content = "(~" + estimatedTotalTime_hour.ToString() + " h " + Math.Round(estimatedTotalTime_decimal * 60) + " min) " + total + " :تعداد فلش کارد های باقی مانده امروز";
             timer.Stop();
             StartTimer();
         }
