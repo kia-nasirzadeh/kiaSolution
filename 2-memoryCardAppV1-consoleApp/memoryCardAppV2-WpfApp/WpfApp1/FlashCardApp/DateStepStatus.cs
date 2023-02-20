@@ -11,4 +11,9 @@ namespace WpfApp1.FlashCardApp
         public DateTime dateTime { get; set; }
         public StepStatus? stepStatus { get; set; }
     }
+    public class StringStepStatus
+    {
+        public string dateTime { get; set; }
+        public StepStatus? stepStatus { get; set; }
+    }
 }

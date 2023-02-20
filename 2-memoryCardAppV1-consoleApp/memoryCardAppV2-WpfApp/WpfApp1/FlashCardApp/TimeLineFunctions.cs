@@ -44,6 +44,53 @@ namespace WpfApp1.FlashCardApp
             }
             return LastStepDateTime;
         }
+        static DateTime? FindFurthestStep(List<DateStepStatus> timeLine)
+        {
+            // 1- find post times timeline
+            DateTime? LastStepDateTime = null;
+            List<DateStepStatus> postTimes_TimeLine = new();
+            if (timeLine is null) return null;
+            for (int i = 0; i < timeLine.Count; i++)
+            {
+                DateTime dateTime = timeLine[i].dateTime;
+                if (DateTime.Today >= dateTime)
+                {
+                    postTimes_TimeLine.Add(timeLine[i]);
+                }
+                else continue;
+            }
+            if (postTimes_TimeLine.Count == 0) throw new Exception("no previous times timeLine");
+            // 2- extract last success/Failed or first absent
+            List<DateStepStatus> postTimesAbsents_timeline = postTimes_TimeLine.Where(c => c.stepStatus.Status == Status.Absent).ToList();
+            DateTime? firstAbsentDay_dateTime = null;
+            if (postTimesAbsents_timeline.Count > 0)
+            firstAbsentDay_dateTime = postTimesAbsents_timeline.Min(i => i.dateTime); // we have no absent day
+            for (int i = postTimes_TimeLine.Count - 1;i >= 0; i--)
+            {
+                DateStepStatus timelineItem = postTimes_TimeLine[i];
+                if (timelineItem.stepStatus!.Status == Status.Failed || timelineItem.stepStatus!.Status == Status.Succeed)
+                {
+                    if (firstAbsentDay_dateTime == null)
+                    {
+                        LastStepDateTime = timelineItem.dateTime;
+                        return LastStepDateTime;
+                    } else if (timelineItem.dateTime > firstAbsentDay_dateTime)
+                    {
+                        LastStepDateTime = timelineItem.dateTime;
+                        return LastStepDateTime;
+                    } else continue;
+                }
+            }
+            if (firstAbsentDay_dateTime == null)
+            {
+                MessageBox.Show("we have errrrorr");
+                MessageBox.Show(JsonConvert.SerializeObject(timeLine));
+                MessageBox.Show(JsonConvert.SerializeObject(postTimesAbsents_timeline));
+                throw new Exception("we have error"); // we can not be here at all! cause we should have absent or Succeed/Failed day in post times
+            }
+            LastStepDateTime = firstAbsentDay_dateTime;
+            return LastStepDateTime;
+        }
         public static List<DateStepStatus> decodeTimeLine(string stringifiedTimeLine)
         {
             List<DateStepStatus>? timeLine = JsonConvert.DeserializeObject<List<DateStepStatus>>(stringifiedTimeLine);
@@ -90,47 +137,69 @@ namespace WpfApp1.FlashCardApp
             var stringifiedTimeline = CodeTimeLine(timeLine);
             return stringifiedTimeline;
         }
+        public static int FindMaximumStep (double spanDays)
+        {
+            List<int> steps = new List<int>() { 1, 2, 4, 8, 16, 32, 64, 128 };
+            List<int> spansMinusSteps = new();
+            for (int i = 0; i < steps.Count; i++)
+            {
+                int step = steps[i];
+                if (spanDays - step >= 0)
+                    spansMinusSteps.Add((int)spanDays - step);
+            }
+            int index = spansMinusSteps.Count - 1;
+            return steps[index];
+        }
         public static string OperationOnTimeLine_success(List<DateStepStatus> timeLine, out DateTime nextDay)
         {
-            Trace.WriteLine("this is time line in success:");
             if (timeLine == null)
             {
                 MessageBox.Show("null in OperationOnTimeLine_success :((");
             }
-            LogTimeLineOnOutput(timeLine);
             nextDay = DateTime.MaxValue;
-            DateTime? lastStepDateTime = FindLastStep(timeLine);
-            if (lastStepDateTime is null) throw new Exception("lastStepDateTime is null - OperationOnTimeLine_success");
-            for (int i = 0; i < timeLine.Count; i++)
+            DateTime? furthestDateTime = FindFurthestStep(timeLine!);
+            if (furthestDateTime is null) throw new Exception("lastStepDateTime is null - OperationOnTimeLine_success");
+            var betweenDays = (DateTime.Today - (DateTime)furthestDateTime).TotalDays;
+            int maxStep = FindMaximumStep(betweenDays);
+            List<DateStepStatus> newTimeline = new();
+            for (int i = 0; i < timeLine!.Count; i++)
             {
                 DateTime dateTime = timeLine[i].dateTime;
                 StepStatus? timeLine_i = timeLine[i].stepStatus;
-                if (lastStepDateTime == dateTime)
+                if (furthestDateTime >= dateTime) //keep it
                 {
-                    if (timeLine_i is not null)
-                    {
-                        timeLine_i.Status = Status.Succeed;
-                        if (timeLine.ElementAtOrDefault(i + 1) is not null)
-                        {
-                            nextDay = timeLine[i + 1].dateTime;
-                        }
-                        else
-                        {
-                            nextDay = DateTime.UnixEpoch; // TODO: if we set it like this, converting DateTime to unix should works fine, but we should test this 
-                        }
-                    }
+                    newTimeline.Add(timeLine[i]);
                 }
-                else if (lastStepDateTime > dateTime)
+            }
+            List<DateStepStatus> rawStepsItems = new();
+            List<int> rawSteps = new List<int> { 1, 2, 4, 8, 16, 32, 64, 128 };
+            int index = rawSteps.FindIndex(a => a.ToString().Contains(maxStep.ToString()));
+            for (int i = index; i < 8; i++)
+            {
+                if (i == index)
                 {
-                    if (timeLine_i is not null)
+                    DateStepStatus dateStepStatus_ = new DateStepStatus() { dateTime = DateTime.Today, stepStatus = new StepStatus() { Step = rawSteps[i], Status = Status.Succeed } };
+                    rawStepsItems.Add(dateStepStatus_);
+                } else
+                {
+                    int daysToAdd = 0;
+                    for (int j = index; j < i; j++)
                     {
-                        if (timeLine_i.Status == Status.NotReached) timeLine_i.Status = Status.Succeed;
+                        daysToAdd += rawSteps[j + 1];
                     }
+                    DateStepStatus dateStepStatus_ = new DateStepStatus() { dateTime = DateTime.Today.AddDays(daysToAdd), stepStatus = new StepStatus() { Step = rawSteps[i], Status = Status.NotReached } };
+                    rawStepsItems.Add(dateStepStatus_);
                 }
-                else continue;
+            }
+            for (int i = 0; i < rawStepsItems.Count; i++)
+            {
+                if (i == 0) rawStepsItems[i].stepStatus!.Status = Status.Succeed;
+                if (i == 0 && rawStepsItems.Count == 1) nextDay = DateTime.UnixEpoch;
+                if (i == 1) nextDay = rawStepsItems[i].dateTime;
+                newTimeline.Add(rawStepsItems[i]);
             }
             if (nextDay == DateTime.MaxValue) throw new Exception("next day have not been set right!");
-            var stringifiedTimeline = CodeTimeLine(timeLine);
+            var stringifiedTimeline = CodeTimeLine(newTimeline);
             return stringifiedTimeline;
         }
         public static string OperationOnTimeLine_fail(List<DateStepStatus> timeLine, out DateTime nextDay)
@@ -188,6 +257,7 @@ namespace WpfApp1.FlashCardApp
             return stringifiedTimeline;
         }
         public static string TimeLineToPersian(List<DateStepStatus> timeLine) {
+            MessageBox.Show("we must not go into this function/ 15-bahman-1401/ we put this comment in case this func is needed in application otherwise we will remove this func later");
             PersianCalendar persianCalendar = new PersianCalendar();
             if (timeLine is null) throw new Exception("timeline is null - TimeLineToPersian");
             for (int i = 0; i < timeLine.Count; i++)
@@ -203,6 +273,7 @@ namespace WpfApp1.FlashCardApp
         }
         public static string TimeLineToGregorian(List<DateStepStatus> timeLine)
         {
+            MessageBox.Show("xpa-we must not go into this function/ 15-bahman-1401/ we put this comment in case this func is needed in application otherwise we will remove this func later");
             GregorianCalendar gregorianCalendar = new GregorianCalendar();
             PersianCalendar persianCalendar = new PersianCalendar();
             if (timeLine is null) throw new Exception("timeLine is null - TimeLineToGregorian");

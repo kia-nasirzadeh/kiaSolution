@@ -29,7 +29,8 @@ namespace WpfApp1.FlashCardApp
         string question;
         string answer;
         string total;
-        string? lastFlashCard;
+        string? lastFlashCard = null;
+        string lastAnswerStatus = "undefined";
         List<DateStepStatus>? timeLine;
         List<DateStepStatus> timeLineToShow;
         FlashCardOperations? fco;
@@ -74,8 +75,24 @@ namespace WpfApp1.FlashCardApp
             // handle key pressing:
             xbody.KeyUp += HandleKeyPressingEvents;
         }
+        public void ShowAnswerShortcut(Object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowAnswer();
+        }
+        public void RightAnswerShortcut(Object sender, ExecutedRoutedEventArgs e)
+        {
+            AnsweredRight();
+        }
+        public void WrongAnswerShortcut(Object sender, ExecutedRoutedEventArgs e)
+        {
+            FailedAnswer();
+        }
         void HandleKeyPressingEvents (object sender, KeyEventArgs e)
         {
+            //if (e.ke)
+            //{
+            //    MessageBox.Show("My message");
+            //}
             switch (e.Key.ToString())
             {
                 case "NumPad1":
@@ -125,6 +142,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementWrongAnswerFlashCardToDb(timeLine!);
+            lastAnswerStatus = "last answer was wrong ❌";
             InitThisPageFlashCard();
         }
         private void AnsweredRight()
@@ -132,6 +150,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementRightAnswerFlashCardToDb(timeLine!);
+            lastAnswerStatus = "last answer was ✔️";
             InitThisPageFlashCard();
         }
         private void ShowAnswer()
@@ -139,12 +158,12 @@ namespace WpfApp1.FlashCardApp
             dbAnswerBox.Text = answer;
         }
         //
-        private void InitThisPageFlashCard ()
+        private void ImplementAFlashCardOnPage (FlashCardOperations fcoo)
         {
-            fco = new();
-            timeLine = fco.GetTimeLine();
-            question = fco.GetQuestion();
-            if (question == "error in GetQuestion")
+            lastAnswerLabel.Content = lastAnswerStatus;
+            timeLine = fcoo.GetTimeLine();
+            question = fcoo.GetQuestion();
+            if (question == "flash card is null")
             {
                 InitEmptyFlashCard();
                 return;
@@ -164,9 +183,28 @@ namespace WpfApp1.FlashCardApp
             total = (string)totalRemainingFlashCards.ToString();
             var estimatedTotalTime_hour = Math.Floor(totalRemainingFlashCards / (float)60);
             var estimatedTotalTime_decimal = totalRemainingFlashCards / (float)60 - Math.Floor(totalRemainingFlashCards / (float)60);
-            remainingQuestionLabel.Content = "(~" + estimatedTotalTime_hour.ToString() + " h " + Math.Round(estimatedTotalTime_decimal * 60) + " min) " + total + " :تعداد فلش کارد های باقی مانده امروز";
+            var estimatedTotalTime_min = Math.Round(estimatedTotalTime_decimal * 60);
+            var estimatedEndingTime = DateTime.Now.AddMinutes(estimatedTotalTime_hour * 60 + estimatedTotalTime_min).ToString("HH:mm");
+            remainingQuestionLabel.Content = "~" + estimatedTotalTime_hour.ToString() + " h " + estimatedTotalTime_min + " min ▬ ending in " + estimatedEndingTime + " ▬ " + total;
+            var tbl = new TextBlock();
+            tbl.Inlines.Add(new Run("~") { });
+            tbl.Inlines.Add(new Run(estimatedTotalTime_hour.ToString()) { FontWeight = FontWeights.Bold });
+            tbl.Inlines.Add(new Run("h:") { FontWeight = FontWeights.Bold });
+            tbl.Inlines.Add(new Run(estimatedTotalTime_min.ToString()) { FontWeight = FontWeights.Bold });
+            tbl.Inlines.Add(new Run("min ") { FontWeight = FontWeights.Bold });
+            tbl.Inlines.Add(new Run("| ending in ") { });
+            tbl.Inlines.Add(new Run(estimatedEndingTime) { FontWeight = FontWeights.Bold, Foreground = Brushes.DarkBlue, FontSize = 18 });
+            tbl.Inlines.Add(new Run(" | ") { });
+            tbl.Inlines.Add(new Run(total) { FontWeight = FontWeights.Bold });
+            tbl.Inlines.Add(new Run(" :تعداد فلش کارد های باقی مانده امروز") { });
+            remainingQuestionLabel.Content = tbl;
             timer.Stop();
             StartTimer();
+        }
+        private void InitThisPageFlashCard () // undo should act like initThisPageFlashCard just with different flashcard!
+        {
+            fco = new(null);
+            ImplementAFlashCardOnPage(fco);
         }
         private void InitEmptyFlashCard ()
         {
@@ -176,26 +214,27 @@ namespace WpfApp1.FlashCardApp
         }
         private void undo_Click (object sender, RoutedEventArgs e)
         {
-            FlashCard? lastFlashCard_ = (FlashCard)JsonConvert.DeserializeObject<FlashCard>(lastFlashCard!);
-            fco.flashCard = lastFlashCard_;
-            if (lastFlashCard_ == null)
+            if (lastFlashCard == null)
             {
-                MessageBox.Show("there is nothing to undo in");
+                MessageBox.Show("nothing to undo");
                 return;
             }
-            question = lastFlashCard_.Question!.ToString();
-            FlashCard fc = lastFlashCard_;
-            if (fc == null)
+            FlashCard? lastFlashCard_ = JsonConvert.DeserializeObject<FlashCard>(lastFlashCard!)!;
+            fco = new FlashCardOperations(lastFlashCard_);
+            ImplementAFlashCardOnPage(fco);
+        }
+        private void latest_Click (object sender, RoutedEventArgs e)
+        {
+            if (lastFlashCard == null)
             {
-                MessageBox.Show("this is wrong !, no lastflashcard here :(");
+                MessageBox.Show("you have no latest flashcard");
                 return;
             }
-            answerBox.Text = "";
-            questionBox.Text = question;
-            userControlsTimeLine.FlashCard = lastFlashCard_;
-            answer = lastFlashCard_.Answer!.ToString();
-            total = (string)fco.totalFlashCardsCountForToday.ToString();
-            remainingQuestionLabel.Content = $"{total} :تعداد فلش کارد های باقی مانده امروز";
+            FlashCard? lastFlashCard_ = (FlashCard)JsonConvert.DeserializeObject<FlashCard>(lastFlashCard!)!; //this is not edited flashcard after last answer
+            int lastFlashCardId = lastFlashCard_.Id;
+            FlashCard lastFlashCard_editedVersion = DbFunctions.GetFlashCardById(lastFlashCardId);
+            FlashCardEdit flashCardEditWindow = new(lastFlashCard_editedVersion, new TableManager());
+            flashCardEditWindow.Show();
         }
         // timer functions
         private void StartTimer ()

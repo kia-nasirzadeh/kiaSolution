@@ -10,6 +10,9 @@
         Background="#DDDFDF">
     <Window.Resources>
         <ResourceDictionary>
+            <RoutedUICommand x:Key="answer" Text="Another Text" />
+            <RoutedUICommand x:Key="rightAnswer" Text="Another Text" />
+            <RoutedUICommand x:Key="wrongAnswer" Text="Another Text" />
             <Style TargetType="Label" x:Key="timeLineLabel">
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -23,6 +26,16 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="J" Modifiers="Ctrl" Command="{StaticResource answer}" />
+        <KeyBinding Key="K" Modifiers="Ctrl" Command="{StaticResource rightAnswer}" />
+        <KeyBinding Key="L" Modifiers="Ctrl" Command="{StaticResource wrongAnswer}" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource answer}" Executed="ShowAnswerShortcut" />
+        <CommandBinding Command="{StaticResource rightAnswer}" Executed="RightAnswerShortcut" />
+        <CommandBinding Command="{StaticResource wrongAnswer}" Executed="WrongAnswerShortcut" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -42,6 +55,9 @@
             <Button DockPanel.Dock="Left" Click="undo_Click"
                     Padding="6" Margin="10"
                     Content="undo" />
+            <Button DockPanel.Dock="Left" Click="latest_Click"
+                    Padding="6" Margin="0 10 10 10"
+                    Content="see latest" />
             <Label DockPanel.Dock="Right" Name="remainingQuestionLabel"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"/>
@@ -52,6 +68,13 @@
                    FontWeight="bold"
                    FontSize="20"
                    Background="lime"/>
+            <Label DockPanel.Dock="Left" Name="lastAnswerLabel"
+                   Foreground="White"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   Padding="10 0 10 0"
+                   FontSize="10"
+                   Background="black"/>
         </DockPanel>
         <TextBlock Grid.Row="1" Grid.Column="0" x:Name="questionBox"
                Background="#EAEBEB"

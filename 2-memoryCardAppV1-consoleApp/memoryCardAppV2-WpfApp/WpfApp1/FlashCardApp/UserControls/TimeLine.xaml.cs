@@ -48,7 +48,7 @@ namespace WpfApp1.FlashCardApp.UserControls
             string timeLine_string = TimeLineFunctions.OperationOnTimeLine_considerAbsentDays(FlashCardOperations.GetTimeLine(fc)!);
             List<DateStepStatus> timeLine = TimeLineFunctions.decodeTimeLine(timeLine_string);
             if (!PutChangedTimeLineIntoDataBase(fc.Question!, fc.Answer!, timeLine, fc.NextDay, fc)) MessageBox.Show("error in adding to database");
-            List<DateStepStatus> timeLineToShow = fc.TimeLineToShow_Persian!;
+            List<StringStepStatus> timeLineToShow = fc.TimeLineToShow_Persian!;
             timeLineDepObj.timelineListView.ItemsSource = timeLineToShow;
         }
         static bool PutChangedTimeLineIntoDataBase (string question_, string answer_, List<DateStepStatus> timeLine_, long nextDay_, FlashCard fc_)

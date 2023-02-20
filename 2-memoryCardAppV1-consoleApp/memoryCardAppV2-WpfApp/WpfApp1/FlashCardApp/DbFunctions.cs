@@ -234,5 +234,23 @@ namespace WpfApp1.FlashCardApp
                 }
             }
         }
+        public static FlashCard GetFlashCardById (int id)
+        {
+            using (SQLiteConnection conn = new(App.dbPath))
+            {
+                try
+                {
+                    conn.CreateTable<FlashCard>();
+                    FlashCard flashCard = (from fc in conn.Table<FlashCard>()
+                                           where fc.Id == id
+                                           select fc).FirstOrDefault();
+                    return flashCard;
+                } catch
+                {
+                    MessageBox.Show("we do not have the id of the latest flashcard");
+                    throw new Exception("we do not have the id of the latest flashcard");
+                }
+            }
+        }
     }
 }

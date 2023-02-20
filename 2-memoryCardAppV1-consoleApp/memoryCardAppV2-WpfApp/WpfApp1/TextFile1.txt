@@ -19,3 +19,14 @@ public void EditBtnClicked(object sender, RoutedEventArgs e)
             FlashCardEdit fce = new(boundData, this);
             fce.Show();
         }
+9-
+remainingQuestionLabel.Content = "~" + estimatedTotalTime_hour.ToString() + " h " + estimatedTotalTime_min + " min ▬ ending in " + estimatedEndingTime + " ▬ " + total;
+            var tbl = new TextBlock();
+            tbl.Inlines.Add(new Run("~") { });
+            tbl.Inlines.Add(new Run(estimatedTotalTime_hour.ToString()) { FontWeight = FontWeights.Bold });
+
+10- use keyBindigs
+11- var tbl = new TextBlock();
+            tbl.Inlines.Add(new Run("~") { })
+12-
+int index = spansMinusSteps.FindIndex(a => a.ToString().Contains(minSpanMinusStep.ToString()));

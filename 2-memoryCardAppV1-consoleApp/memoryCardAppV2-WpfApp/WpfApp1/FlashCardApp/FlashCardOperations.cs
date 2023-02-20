@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 using SQLite;
 using System.Diagnostics;
 using System.Windows;
+using Newtonsoft.Json;
 
 namespace WpfApp1.FlashCardApp
 {
     internal class FlashCardOperations
     {
         public FlashCard? flashCard = new();
+        public FlashCard? givenFlashCard;
         public int totalFlashCardsCountForToday = 0;
-        public FlashCardOperations ()
+        public FlashCardOperations (FlashCard? givenFlashCard_arg)
         {
             int tfccft = 0;
-            flashCard = Get(out tfccft);
+            if (givenFlashCard_arg != null) givenFlashCard = givenFlashCard_arg;
+            flashCard = Get(out tfccft); // timeline hasn't absent days
+            if (flashCard != null)
+            flashCard!.TimeLine = TimeLineFunctions.OperationOnTimeLine_considerAbsentDays(TimeLineFunctions.decodeTimeLine(flashCard!.TimeLine!)); // now timeline has absent days
             totalFlashCardsCountForToday = tfccft;
         }
-
         public FlashCard? Get(out int total)
         {
             long todayLong = CommonFunctions.DateTimeToLong(DateTime.Today);
@@ -35,12 +39,14 @@ namespace WpfApp1.FlashCardApp
                 } catch (Exception ex)
                 {
                     Trace.TraceError(ex.ToString());
+                    MessageBox.Show(ex.ToString());
+                    throw new Exception(ex.ToString());
                 }
             }
             total = forTodayList.Count;
-            if (total == 0)
+            if (givenFlashCard != null)
             {
-                Trace.WriteLine("bad news is herex");
+                return givenFlashCard;
             }
             if (total > 0)
             {
@@ -51,12 +57,12 @@ namespace WpfApp1.FlashCardApp
         }
         public string GetQuestion ()
         {
-            if (flashCard is null) return "error in GetQuestion";
+            if (flashCard is null) return "flash card is null";
             else return flashCard.Question!.ToString();
         }
         public string GetAnswer()
         {
-            if (flashCard is null) return "error in GetAnswer";
+            if (flashCard is null) return "flash card is null";
             else return flashCard.Answer!.ToString();
         }
         public static List<DateStepStatus>? GetTimeLine(FlashCard flashCard)

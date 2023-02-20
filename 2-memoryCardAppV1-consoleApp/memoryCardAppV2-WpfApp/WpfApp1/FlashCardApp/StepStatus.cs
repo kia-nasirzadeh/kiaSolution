@@ -8,10 +8,10 @@ namespace WpfApp1.FlashCardApp
 {
     public enum Status
     {
-        NotReached,
-        Succeed,
-        Failed,
-        Absent
+        NotReached, //0
+        Succeed, //1
+        Failed, //2
+        Absent //3
     }
     public class StepStatus
     {

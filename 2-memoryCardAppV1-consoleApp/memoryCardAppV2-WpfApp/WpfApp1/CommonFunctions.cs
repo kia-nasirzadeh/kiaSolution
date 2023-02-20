@@ -24,7 +24,7 @@ namespace WpfApp1
             {
                 PersianCalendar persianCalendar = new PersianCalendar();
                 DateTime gregorianDate = dtDateTime;
-                dtDateTime = new DateTime(persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate));
+                dtDateTime = new DateTime(persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate)); // todo: problem
             }
             return dtDateTime.ToString();
         }

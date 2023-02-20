@@ -37,11 +37,11 @@ namespace WpfApp1.FlashCardApp
             }
         }
         [Ignore]
-        public List<DateStepStatus>? TimeLineToShow_Persian
+        public List<StringStepStatus>? TimeLineToShow_Persian
         {
             get
             {
-                List<DateStepStatus>? timeLine = JsonConvert.DeserializeObject<List<DateStepStatus>>(TimeLine!);
+                List<StringStepStatus>? timeLine = JsonConvert.DeserializeObject<List<StringStepStatus>>(TimeLine!);
                 if (timeLine is not null)
                 {
                     PersianCalendar persianCalendar = new PersianCalendar();
@@ -49,12 +49,11 @@ namespace WpfApp1.FlashCardApp
                     {
                         if (timeLine[i] is not null)
                         {
-                            DateTime gregorianDate = timeLine[i].dateTime;
-                            timeLine[i].dateTime = new DateTime(persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate));
+                            string gregorianDate = timeLine[i].dateTime;
+                            DateTime gregorianDateTime = Convert.ToDateTime(gregorianDate);
+                            timeLine[i].dateTime = $"{persianCalendar.GetYear(gregorianDateTime)}-{persianCalendar.GetMonth(gregorianDateTime)}-{persianCalendar.GetDayOfMonth(gregorianDateTime)}";
                         }
                     }
-                    Trace.WriteLine("---------------------");
-                    Trace.WriteLine(JsonConvert.SerializeObject(timeLine));
                     return timeLine;
                 }
                 else return null;
