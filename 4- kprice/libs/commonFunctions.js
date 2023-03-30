@@ -354,6 +354,7 @@ var car = {
             // for (column of cols) {
             //     row[column] = prompt(column);
             // }
+            // just test
             this.rows.push(row);
             return true;
         },
