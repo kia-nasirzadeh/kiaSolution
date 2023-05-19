@@ -1,0 +1,62 @@
+1- d to c, hold d.txt:
+
+********************************PS\nf4> git reset HEAD~
+=======================================================================
+2- c to c, like the first time you commited c(erase further changes)
+
+********************************PS\nf4> git reflog
+9cff14d (HEAD -> main) HEAD@{0}: reset: moving to HEAD~
+a3f5818 HEAD@{1}: commit: d
+9cff14d (HEAD -> main) HEAD@{2}: commit: c
+e3ed937 HEAD@{3}: commit: b
+4883299 HEAD@{4}: commit (initial): a
+********************************PS\nf4> git reset 'HEAD@{1}'
+
+
+********************************PS\nf4> git reset --hard HEAD~
+HEAD is now at 9cff14d c
+********************************PS\nf4> dir;git log --oneline
+
+
+    Directory: C:\Users\kia-nasirzadeh\Desktop\nf4
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         5/10/2023   4:38 PM              0 a.txt
+-a----         5/10/2023   4:38 PM              0 b.txt
+-a----         5/10/2023   4:38 PM              0 c.txt
+9cff14d (HEAD -> main) c
+e3ed937 b
+4883299 a
+=======================================================================
+3- c to d
+
+********************************PS\nf4> git reflog
+9cff14d (HEAD -> main) HEAD@{0}: reset: moving to HEAD~
+a3f5818 HEAD@{1}: reset: moving to HEAD@{1}
+9cff14d (HEAD -> main) HEAD@{2}: reset: moving to HEAD~
+a3f5818 HEAD@{3}: commit: d
+9cff14d (HEAD -> main) HEAD@{4}: commit: c
+e3ed937 HEAD@{5}: commit: b
+4883299 HEAD@{6}: commit (initial): a
+********************************PS\nf4> git reset 'HEAD@{3}'
+Unstaged changes after reset:
+D       d.txt
+********************************PS\nf4> git restore .
+********************************PS\nf4> dir;git log --oneline
+
+
+    Directory: C:\Users\kia-nasirzadeh\Desktop\nf4
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         5/10/2023   4:38 PM              0 a.txt
+-a----         5/10/2023   4:38 PM              0 b.txt
+-a----         5/10/2023   4:38 PM              0 c.txt
+-a----         5/10/2023   4:43 PM              0 d.txt
+a3f5818 (HEAD -> main) d
+9cff14d c
+e3ed937 b
+4883299 a
