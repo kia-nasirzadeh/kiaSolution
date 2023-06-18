@@ -184,7 +184,7 @@ namespace WpfApp1.FlashCardApp
             }
         }
         // page button operations:
-        public static void RightAnswerToDb(FlashCard flashCard) // this should be in DbFunctions
+        public static void RightAnswerToDb(FlashCard flashCard)
         {
             using (SQLiteConnection conn = new(App.dbPath))
             {
@@ -192,6 +192,22 @@ namespace WpfApp1.FlashCardApp
                 {
                     conn.CreateTable<FlashCard>();
                     conn.Update(flashCard);
+                }
+                catch (SQLiteException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+        public static void FinalRightAnswerToDb(FlashCard flashCard)
+        {
+            using (SQLiteConnection conn = new(App.dbPath))
+            {
+                try
+                {
+                    conn.CreateTable<FlashCard>();
+                    conn.Delete(flashCard);
+                    MessageBox.Show("✅ a flashCard is Done and deleted forever", "congratulations", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (SQLiteException e)
                 {

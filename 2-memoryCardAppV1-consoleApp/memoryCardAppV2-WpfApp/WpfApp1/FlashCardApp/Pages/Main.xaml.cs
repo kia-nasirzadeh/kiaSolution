@@ -116,6 +116,7 @@ namespace WpfApp1.FlashCardApp
         void HandleClickingEvents (object sender, RoutedEventArgs e)
         {
             Button SenderAsButton = (Button)sender;
+            //MessageBox.Show(SenderAsButton.Name);
             switch (SenderAsButton.Name)
             {
                 case "showBtn":
@@ -142,7 +143,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementWrongAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "last answer was wrong ❌";
+            lastAnswerStatus = "prev:❌";
             InitThisPageFlashCard();
         }
         private void AnsweredRight()
@@ -150,7 +151,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementRightAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "last answer was ✔️";
+            lastAnswerStatus = "prev:✔️";
             InitThisPageFlashCard();
         }
         private void ShowAnswer()

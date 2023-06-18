@@ -148,6 +148,10 @@ namespace WpfApp1.FlashCardApp
                     spansMinusSteps.Add((int)spanDays - step);
             }
             int index = spansMinusSteps.Count - 1;
+            if (index < 0) // we are in the end, timeline is done
+            {
+                return -1;
+            }
             return steps[index];
         }
         public static string OperationOnTimeLine_success(List<DateStepStatus> timeLine, out DateTime nextDay)
@@ -161,6 +165,7 @@ namespace WpfApp1.FlashCardApp
             if (furthestDateTime is null) throw new Exception("lastStepDateTime is null - OperationOnTimeLine_success");
             var betweenDays = (DateTime.Today - (DateTime)furthestDateTime).TotalDays;
             int maxStep = FindMaximumStep(betweenDays);
+            if (maxStep == -1) throw new Exception("flash card is wrongly opened, it ended and you should not be here");
             List<DateStepStatus> newTimeline = new();
             for (int i = 0; i < timeLine!.Count; i++)
             {
@@ -199,8 +204,16 @@ namespace WpfApp1.FlashCardApp
                 newTimeline.Add(rawStepsItems[i]);
             }
             if (nextDay == DateTime.MaxValue) throw new Exception("next day have not been set right!");
-            var stringifiedTimeline = CodeTimeLine(newTimeline);
-            return stringifiedTimeline;
+            var _128Step = newTimeline[newTimeline.Count - 1].stepStatus.Step; // 128
+            var _128Status = newTimeline[newTimeline.Count - 1].stepStatus.Status; // Succeed
+            if (_128Step.ToString() == "128" && _128Status.ToString() == "Succeed") // we ended this fc
+            {
+                return "";
+            } else
+            {
+                var stringifiedTimeline = CodeTimeLine(newTimeline);
+                return stringifiedTimeline;
+            }
         }
         public static string OperationOnTimeLine_fail(List<DateStepStatus> timeLine, out DateTime nextDay)
         {

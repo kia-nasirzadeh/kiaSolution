@@ -20,13 +20,14 @@ namespace WpfApp1
         {
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(dt).ToLocalTime();
+            string dtToReturn = dtDateTime.ToString();
             if (persian)
             {
                 PersianCalendar persianCalendar = new PersianCalendar();
                 DateTime gregorianDate = dtDateTime;
-                dtDateTime = new DateTime(persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate)); // todo: problem
+                dtToReturn = string.Format("{0:0000}/{1:00}/{2:00}", persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate));
             }
-            return dtDateTime.ToString();
+            return dtToReturn;
         }
     }
 }

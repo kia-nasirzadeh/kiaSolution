@@ -17,9 +17,9 @@ namespace WpfApp1.FlashCardApp
         public int totalFlashCardsCountForToday = 0;
         public FlashCardOperations (FlashCard? givenFlashCard_arg)
         {
-            int tfccft = 0;
+            // int tfccft = 0; // i think we don't need this anymore let's see what happens next
             if (givenFlashCard_arg != null) givenFlashCard = givenFlashCard_arg;
-            flashCard = Get(out tfccft); // timeline hasn't absent days
+            flashCard = Get(out int tfccft); // timeline hasn't absent days
             if (flashCard != null)
             flashCard!.TimeLine = TimeLineFunctions.OperationOnTimeLine_considerAbsentDays(TimeLineFunctions.decodeTimeLine(flashCard!.TimeLine!)); // now timeline has absent days
             totalFlashCardsCountForToday = tfccft;
@@ -76,7 +76,7 @@ namespace WpfApp1.FlashCardApp
             else return TimeLineFunctions.decodeTimeLine(flashCard.TimeLine!);
         }
         // page button operations:
-        public void ImplementRightAnswerFlashCardToDb (List<DateStepStatus> timeLine) // this should be in DbFunctions
+        public void ImplementRightAnswerFlashCardToDb (List<DateStepStatus> timeLine)
         {
             if (timeLine is null)
             {
@@ -85,7 +85,13 @@ namespace WpfApp1.FlashCardApp
             string timeLineAfterSuccess = TimeLineFunctions.OperationOnTimeLine_success(timeLine, out DateTime nextDay);
             flashCard!.TimeLine = timeLineAfterSuccess;
             flashCard!.NextDay = CommonFunctions.DateTimeToLong(nextDay);
-            DbFunctions.RightAnswerToDb(flashCard);
+            if (timeLineAfterSuccess == "")
+            {
+                DbFunctions.FinalRightAnswerToDb(flashCard);
+            } else
+            {
+                DbFunctions.RightAnswerToDb(flashCard);
+            }
         }
         public void ImplementWrongAnswerFlashCardToDb(List<DateStepStatus> timeLine)
         {
