@@ -29,6 +29,7 @@ namespace WpfApp1.FlashCardApp
         string question;
         string answer;
         string total;
+        string qaToCopy;
         string? lastFlashCard = null;
         string lastAnswerStatus = "undefined";
         List<DateStepStatus>? timeLine;
@@ -62,7 +63,6 @@ namespace WpfApp1.FlashCardApp
                     timer.Stop();
                 }
             };
-            answerBox.Focus();
         }
         void HandleEvents (object sender, RoutedEventArgs e)
         {
@@ -110,6 +110,9 @@ namespace WpfApp1.FlashCardApp
                 case "tableManagerBtn":
                     TableManager tableManagerWindow = new();
                     tableManagerWindow.Show();
+                    break;
+                case "NumPad5":
+                    OkCopyFunc();
                     break;
             }
         }
@@ -180,6 +183,8 @@ namespace WpfApp1.FlashCardApp
             dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;
             answer = fco.GetAnswer();
+            qaToCopy = question + "\n------\n------\n------\n" + answer;
+
             var totalRemainingFlashCards = fco.totalFlashCardsCountForToday;
             total = (string)totalRemainingFlashCards.ToString();
             var estimatedTotalTime_hour = Math.Floor(totalRemainingFlashCards / (float)60);
@@ -201,6 +206,11 @@ namespace WpfApp1.FlashCardApp
             remainingQuestionLabel.Content = tbl;
             timer.Stop();
             StartTimer();
+            answerBox.Focus();
+        }
+        private void OkCopyFunc ()
+        {
+            Clipboard.SetText(qaToCopy);
         }
         private void InitThisPageFlashCard () // undo should act like initThisPageFlashCard just with different flashcard!
         {
