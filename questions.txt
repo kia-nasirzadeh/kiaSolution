@@ -14,3 +14,6 @@ i don't know what is a m3u8, ts, hsl, ffmpeg, N_m3u8DL-CLI_v3.0.2, ...
 • https://www.udemy.com/course/ffmpeg-the-complete-guide/
 project: download videos from ayabussinessScholl
 ----------------------------------------
+select a text with javascript
+keypress with javascript
+utf vs utf8mb4
