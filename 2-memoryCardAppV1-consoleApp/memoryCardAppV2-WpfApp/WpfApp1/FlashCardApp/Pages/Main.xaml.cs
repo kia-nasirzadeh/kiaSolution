@@ -16,6 +16,8 @@ using System.Diagnostics;
 using SQLite;
 using Newtonsoft.Json;
 using System.Windows.Threading;
+using System.ComponentModel;
+using System.Threading;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -32,12 +34,15 @@ namespace WpfApp1.FlashCardApp
         string qaToCopy;
         string? lastFlashCard = null;
         string lastAnswerStatus = "undefined";
+        bool instantiatedFromTableManager = false;
+        public bool noFlashCardForToday = false;
         List<DateStepStatus>? timeLine;
         List<DateStepStatus> timeLineToShow;
         FlashCardOperations? fco;
-        public Main ()
+        public Main (bool instantiatedFromTableManager = false)
         {
             InitializeComponent();
+            if (instantiatedFromTableManager) this.instantiatedFromTableManager = true;
             WindowState = WindowState.Maximized;
             xbody.Loaded += StartApp;
             xbody.Loaded += HandleEvents;
@@ -114,6 +119,9 @@ namespace WpfApp1.FlashCardApp
                 case "NumPad5":
                     OkCopyFunc();
                     break;
+                case "NumPad6":
+                    latest_Click();
+                    break;
             }
         }
         void HandleClickingEvents (object sender, RoutedEventArgs e)
@@ -133,6 +141,12 @@ namespace WpfApp1.FlashCardApp
                     break;
                 case "manageBtn":
                     ManageFlashCard();
+                    break;
+                case "undo_btn":
+                    undo_Click();
+                    break;
+                case "latest_btn":
+                    latest_Click();
                     break;
             }
         }
@@ -183,7 +197,7 @@ namespace WpfApp1.FlashCardApp
             dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;
             answer = fco.GetAnswer();
-            qaToCopy = question + "\n------\n------\n------\n" + answer;
+            qaToCopy = question + "\n╟╟────────────────────────────────────────╢╢\n╟╟────────────────────────────────────────╢╢\n" + answer;
 
             var totalRemainingFlashCards = fco.totalFlashCardsCountForToday;
             total = (string)totalRemainingFlashCards.ToString();
@@ -219,11 +233,12 @@ namespace WpfApp1.FlashCardApp
         }
         private void InitEmptyFlashCard ()
         {
+            noFlashCardForToday = true;
             EmptyMain emptyMain = new();
             emptyMain.Show();
-            Close();
+            if (!instantiatedFromTableManager) Close();
         }
-        private void undo_Click (object sender, RoutedEventArgs e)
+        private void undo_Click ()
         {
             if (lastFlashCard == null)
             {
@@ -234,7 +249,7 @@ namespace WpfApp1.FlashCardApp
             fco = new FlashCardOperations(lastFlashCard_);
             ImplementAFlashCardOnPage(fco);
         }
-        private void latest_Click (object sender, RoutedEventArgs e)
+        private void latest_Click ()
         {
             if (lastFlashCard == null)
             {

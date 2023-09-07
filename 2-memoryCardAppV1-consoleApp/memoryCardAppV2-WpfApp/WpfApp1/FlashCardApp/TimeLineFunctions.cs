@@ -60,21 +60,19 @@ namespace WpfApp1.FlashCardApp
                 else continue;
             }
             if (postTimes_TimeLine.Count == 0) throw new Exception("no previous times timeLine");
-            // 2- extract last success/Failed or first absent
-            List<DateStepStatus> postTimesAbsents_timeline = postTimes_TimeLine.Where(c => c.stepStatus.Status == Status.Absent).ToList();
+            if (postTimes_TimeLine.Count == 1) return postTimes_TimeLine[0].dateTime; // we are in first day after building flashCard
+            // 2- extract last success/Failed or first absent from today
+            List<DateStepStatus> postTimesAbsents_timeline = postTimes_TimeLine.Where(c => c.stepStatus!.Status == Status.Absent).ToList();
+            if (postTimesAbsents_timeline.Count == 0) return postTimes_TimeLine[postTimes_TimeLine.Count - 2].dateTime; // no absent days before, so current day step is max step
             DateTime? firstAbsentDay_dateTime = null;
             if (postTimesAbsents_timeline.Count > 0)
-            firstAbsentDay_dateTime = postTimesAbsents_timeline.Min(i => i.dateTime); // we have no absent day
+                firstAbsentDay_dateTime = postTimesAbsents_timeline.Min(i => i.dateTime); // we have no absent day
             for (int i = postTimes_TimeLine.Count - 1;i >= 0; i--)
             {
                 DateStepStatus timelineItem = postTimes_TimeLine[i];
                 if (timelineItem.stepStatus!.Status == Status.Failed || timelineItem.stepStatus!.Status == Status.Succeed)
                 {
-                    if (firstAbsentDay_dateTime == null)
-                    {
-                        LastStepDateTime = timelineItem.dateTime;
-                        return LastStepDateTime;
-                    } else if (timelineItem.dateTime > firstAbsentDay_dateTime)
+                    if (timelineItem.dateTime > firstAbsentDay_dateTime)
                     {
                         LastStepDateTime = timelineItem.dateTime;
                         return LastStepDateTime;
@@ -139,6 +137,7 @@ namespace WpfApp1.FlashCardApp
         }
         public static int FindMaximumStep (double spanDays)
         {
+            if (spanDays == 0) return 1;
             List<int> steps = new List<int>() { 1, 2, 4, 8, 16, 32, 64, 128 };
             List<int> spansMinusSteps = new();
             for (int i = 0; i < steps.Count; i++)
@@ -171,7 +170,7 @@ namespace WpfApp1.FlashCardApp
             {
                 DateTime dateTime = timeLine[i].dateTime;
                 StepStatus? timeLine_i = timeLine[i].stepStatus;
-                if (furthestDateTime >= dateTime) //keep it
+                if (furthestDateTime >= dateTime && maxStep != 1) //keep it
                 {
                     newTimeline.Add(timeLine[i]);
                 }

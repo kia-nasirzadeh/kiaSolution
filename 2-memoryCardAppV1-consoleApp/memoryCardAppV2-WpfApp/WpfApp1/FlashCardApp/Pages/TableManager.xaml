@@ -68,6 +68,13 @@
                         Content="sort by date DESC" 
                         Margin="0 0 10 0"
                         Padding="5"/>
+                <Button DockPanel.Dock="Right" x:Name="runBtn"
+                        Background="Red"
+                        Foreground="Black"
+                        FontSize="20"
+                        Content="RUN" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
                 <Button DockPanel.Dock="Right" x:Name="abDirBtn"
                         Content="answerBox Direction" 
                         Margin="0 0 10 0"

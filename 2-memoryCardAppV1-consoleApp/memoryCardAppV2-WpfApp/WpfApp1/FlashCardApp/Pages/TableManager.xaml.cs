@@ -98,6 +98,10 @@ namespace WpfApp1.FlashCardApp
                 case "abDirBtn":
                     abChangeDir();
                     break;
+                case "runBtn":
+                    openMainWindow();
+                    break;
+
             }
         }
         // declare partial methods:
@@ -126,6 +130,12 @@ namespace WpfApp1.FlashCardApp
             else answerBox.FlowDirection = FlowDirection.LeftToRight;
             KiaSolution.AppSettings.AppSettings.ChangeAppSettings_abDir();
             answerBox.Focus();
+        }
+        void openMainWindow ()
+        {
+            Main mainWindow2 = new (true);
+            mainWindow2.Show();
+            if (mainWindow2.noFlashCardForToday) mainWindow2.Close(); 
         }
         public void Paginate ()
         {

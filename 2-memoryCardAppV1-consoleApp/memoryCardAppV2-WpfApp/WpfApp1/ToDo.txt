@@ -1,1 +1,2 @@
 ﻿1- application doesn't close with cross sign, the operation still is open in task manager
+2- next beside last flashCard, aslo next flash card should be ready for fast paging
