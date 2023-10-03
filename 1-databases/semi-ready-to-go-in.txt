@@ -1,0 +1,379 @@
+functions classification (by anonymousity and named/unNamed criteria)
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+1- typical-not-anonymous funcs:
+1-1- typical named functions: function f (){}/f=fuction(){}/f:function(){}
+1-2- typical un-named functions as event-handler/callback/... a.b(function(){})
+
+2- arrow-anonymous funcs:
+2-1- arrow named functions f=()=>{}/f:()=>{}
+2-2- arrow un-named functions a.b(()=>{})
+
+let objj = {
+    func2: function () {
+        console.log(this); // 1-1, this->objj
+    },
+    func1: () => {
+        console.log(this) // 2-1, this->windows
+    }
+}
+
+$(x).change( function () { console.log(this) }) // 2-1, this->$(x)
+$(x).change( ()=>{ console.log(x) }) // 2-2, this->windows
+
+
+https://www.youtube.com/watch?v=8j_hxBw5B4E
+
+htaccess:
+how to rewrite park-wash.ir 
+to 
+park-wash.ir/search/search.php?
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^park\-wash\.ir$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.park\-wash\.ir$
+RewriteRule ^/?$ "http\:\/\/park\-wash\.ir\/pages\/search\/search\.php" [R=301,L]
+
+
+
+kia\4- html trainings\1- htmljscss trainings
+build everything
+offline
+and don't get help from any other file
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+
+
+kia\4- html trainings\2- node console app
+build a cli with nodejs
+
+hello -n=ali -b => box rounded
+or hello --name=ali --box
+hello -n=name => no box rounded
+hello => help
+hello -b => name is required
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+
+
+\kia\4- html trainings\3- Es6Modules
+do the readme?
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+
+kia\4- html trainings\4- fsModule
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+
+C:\Users\kia-nasirzadeh\Desktop\kia\4- trainings\5- back\1\project1
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+
+make a.txt and commit it with "a" message
+make b.txt and commit it with "b" message
+make c.txt and commit it with "c" message
+make d.txt and commit it with "d" message
+
+1- d to c, hold d.txt
+2- c to c, like the first time you commited c(erase further changes)
+3- c to d
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+C:\Users\kia-nasirzadeh\Desktop\kia\6- trainings\1- git\answer2.txt
+
+
+
+C:\Users\kia-nasirzadeh\Desktop\kia\4- html trainings\6- dragdrop
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+
+
+git project 1:
+••• step one: create a local project, upload it to git
+••• step two: add a new feature branch to your local project and upload it to git:
+••• step three: merge newf to main and see the tree log
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+C:\Users\kia-nasirzadeh\Desktop\kia\6- trainings\1- git\answer.txt
+
+
+
+
+ic C:
+1- int x = 5;
+2- x = 5
+3- x = 5;
+4- printf("Hello, world!\n");
+5- printf("Hello, world!\n")
+╟╟────────────────────────────────────────╢╢
+╟╟────────────────────────────────────────╢╢
+1- declaration, initialization, assignment
+2- expression
+3- expression statement
+4- expression statement
+5- statement
+
+
+There are a number of built-in variables in .htaccess that can be used to make dynamic changes to the server's behavior. These variables are typically used in conjunction with the RewriteEngine directive to redirect requests, canonicalize URLs, and perform other modifications.
+
+Here is a list of some of the most common built-in .htaccess variables:
+
+%{HTTP_HOST} - The hostname of the request.
+%{SERVER_PORT} - The port number that the request was made on.
+%{REQUEST_URI} - The full path of the request, including the query string.
+%{SCRIPT_NAME} - The name of the script that is being requested.
+%{PATH_INFO} - The path information for the request, which is the part of the URL that follows the script name.
+%{QUERY_STRING} - The query string of the request, which is the part of the URL that follows the question mark.
+%{REMOTE_ADDR} - The IP address of the client that made the request.
+%{REMOTE_HOST} - The hostname of the client that made the request.
+%{HTTP_USER_AGENT} - The user agent string of the client that made the request.
+%{HTTP_REFERER} - The URL of the page that referred the user to the current page.
+%{REQUEST_METHOD} - The HTTP method used to make the request, such as GET, POST, or PUT.
+%{AUTH_TYPE} - The authentication type used to make the request, such as Basic or Digest.
+%{CONTENT_LENGTH} - The length of the request body, in bytes.
+%{CONTENT_TYPE} - The MIME type of the request body.
+In addition to these built-in variables, there are also a number of custom variables that can be created using the SetEnv directive. Custom variables can be used to store data that can be accessed by subsequent directives in the .htaccess file.
+
+Here is an example of how to use a built-in variable in a .htaccess file:
+
+RewriteEngine On
+
+# Redirect all requests to the non-WWW version of the domain.
+RewriteCond %{HTTP_HOST} ^[^.]+\.([^.]+)\.[^.]+$
+RewriteRule ^(.*)$ https://www.%1/$1 [R=301,L]
+This directive will redirect all requests to the http:// version of the domain to the https://www. version.
+
+Here is an example of how to use a custom variable in a .htaccess file:
+
+RewriteEngine On
+
+# Set a custom variable to store the language of the request.
+SetEnvIf HTTP_ACCEPT_LANGUAGE en-US lang=en
+SetEnvIf HTTP_ACCEPT_LANGUAGE en-GB lang=en
+SetEnvIf HTTP_ACCEPT_LANGUAGE es-ES lang=es
+
+# Redirect all requests to the language-specific version of the website.
+RewriteRule ^(.*)$ https://%{ENV:lang}.example.com/$1 [R=301,L]
+This directive will redirect all requests to the language-specific version of the website, based on the HTTP_ACCEPT_LANGUAGE header in the request.
+
+Built-in and custom variables can be used in a variety of ways to modify the server's behavior. For more information, please consult the Apache documentation on mod_rewrite: https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html.
+
+
+Here is a list of some of the most commonly used flags in htaccess:
+
+[L] - Last: Stops processing any remaining rules that may follow.
+[R] - Redirect: Sends back a redirect status code (3xx) and the new location.
+[QSA] - Query String Append: Appends the query string from the original request to the new request.
+[NC] - No Case: Makes the pattern case-insensitive.
+[OR] - OR: Matches if either the pattern or the previous pattern matches.
+[NE] - No Escape: Does not escape special characters in the pattern.
+[NS] - No Subrequest: Does not apply the rule to subrequests.
+[P] - Proxy: Passes the request to another server.
+[PT] - Pass Through: Sends the formatted URL back to Apache.
+[T] - Type: Sets the MIME type of the response.
+[ENV] - Environment: Sets an environment variable.
+[F] - Forbidden: Returns a 403 Forbidden error.
+[G] - Gone: Returns a 410 Gone error.
+[S] - Skip: Skips the next x rules if a match is found.
+These flags can be used to modify the behavior of RewriteRule directives. For example, the following rule will redirect all requests to the root directory of the website:
+
+Code snippet
+RewriteRule ^/(.*)$ / [R=301,L]
+Use code with caution. Learn more
+The [R=301] flag tells Apache to send a 301 permanent redirect, and the [L] flag tells Apache to stop processing any remaining rules.
+
+The following rule will rewrite all requests to the /old-page.html page to the /new-page.html page:
+
+Code snippet
+RewriteRule ^/old-page\.html$ /new-page\.html [R=301,L]
+Use code with caution. Learn more
+In this case, the [R=301] flag and the [L] flag have the same effect as in the previous example.
+
+For more information on htaccess flags, please see the Apache HTTP Server documentation: https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html.
+
+The most important directives in Apache are those that control the server's basic operation, such as:
+
+DocumentRoot - Specifies the directory where Apache will look for HTML files to serve.
+Listen - Specifies the port(s) that Apache will listen on for incoming requests.
+ServerName - Specifies the domain name(s) that Apache will respond to.
+AllowOverride - Specifies which configuration directives can be overridden by .htaccess files.
+ErrorLog - Specifies the file where Apache will log errors.
+CustomLog - Specifies the file(s) where Apache will log access and other information.
+These directives are typically configured in the main Apache configuration file, httpd.conf.
+
+In addition to these basic directives, there are many other directives that can be used to customize Apache's behavior. Some of the most commonly used directives include:
+
+Directory - Specifies configuration directives for a specific directory.
+Alias - Creates an alias for a directory or file.
+Redirect - Redirects requests to a different URL.
+Rewrite - Modifies the URL of a request before processing it.
+SetEnvIf - Sets an environment variable if a condition is met.
+These directives can be used to achieve a wide variety of tasks, such as:
+
+Restricting access to certain directories or files
+Serving different content to different types of users
+Caching content to improve performance
+Creating redirects for old or outdated URLs
+Securing your website
+Which directives are most important for you will depend on your specific needs. However, the directives listed above are a good starting point for learning how to configure Apache.
+
+Note: The Apache documentation provides a comprehensive list of all available directives, as well as information on how to use them.
+
+https://ryanstutorials.net/bash-scripting-tutorial/
+
+
+echo "hello";
+$global:dashboardPath = "C:\Users\kia-nasirzadeh\Desktop\dashboard";
+function kia-help () {
+    echo "
+    config -user
+    cdt -das -des
+    exp
+    tit
+    chr
+    edi -typora -code
+    key
+    ";
+}
+function key () {
+    $path = $HOME + "\Documents\keyboard.ahk";
+    Start-Process $path;
+}
+function edi {
+    param (
+        [switch] $code,
+        [string] $typora
+    )
+    if ($code) {
+        code .;
+    } elseif ($typora) {
+        $path = $env:ProgramFiles + "\Typora\Typora.exe";
+        Start-Process $typora | Out-Null;
+    }
+}
+function exp () {
+    explorer.exe .;
+}
+function cdt {
+    param(
+        [switch] $das,
+        [switch] $des,
+        [switch] $dow,
+        [switch] $exp,
+        [switch] $doc,
+        [switch] $etc
+    )
+    if ($das) {
+        cd $dashboardPath;
+    } elseif ($des) {
+        $path = $HOME + "\Desktop";
+        cd $path;
+    } elseif ($dow) {
+        $path = $HOME + "\Downloads";
+        cd $path;
+    } elseif ($doc) {
+        $path = $HOME + "\Documents";
+        cd $path;
+    } elseif ($etc) {
+        cd "C:\Windows\System32\drivers\etc"
+    }
+
+    if ($exp) { exp; }
+}
+function kia-get-control ($path) {
+    # for example $path="D:\Windows.old"
+    $acl = Get-Acl $path
+
+    # get sid of LOCAL SERVICE:
+    # $sid = New-Object System.Security.Principal.SecurityIdentifier("S-1-5-19")
+    # $localServiceName = ($sid.Translate([System.Security.Principal.NTAccount])).Value
+    # $user = $localServiceName;
+
+    # get osid of a user e.g. kia-nasirzadeh (which is kia-desktop\kia-nasirzadeh):
+    # $username = 'kia-nasirzadeh';
+    # $sid = New-Object System.Security.Principal.NTAccount($username)
+    # $localServiceName = $sid.Translate([System.Security.Principal.SecurityIdentifier]);
+    # $localServiceName = $localServiceName.Value;
+    # $sid = $localServiceName;
+    # $osid = New-Object System.Security.Principal.SecurityIdentifier($sid);
+    # $user = $osid.Translate([System.Security.Principal.NTAccount]);
+    # $user = $user.Value;
+
+    # get osid of SYSTEM:
+    # $sid = "SYSTEM";
+    # $user = $sid;
+
+    # get osid of Administrator:
+    # $user = "Administrator";
+
+    $permission = $user,"FullControl","ContainerInherit, ObjectInherit","None","Allow"
+    $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($permission)
+    try {
+        $acl.SetAccessRule($accessRule)
+    } catch {
+        Write-Host "the error is $_"
+    }
+    $acl | Set-Acl $path
+}
+function tit {
+    param (
+        [string] $title
+    )
+    $Host.UI.RawUI.WindowTitle = $title;
+}
+function chr {
+    param (
+        [switch] $colife,
+        [switch] $car
+    )
+    $chrome_exe = $env:ProgramFiles + "\Google\Chrome\Application\chrome.exe";
+    $work_link_1 = "https://web.whatsapp.com/";
+    $work_link_2 = "https://gitlab.testprojects.ir/root/colife-backend/-/tree/main";
+    $work_link_3 = "https://colife-labs.atlassian.net/jira/software/projects/COL/boards/1";
+    $work_link_4 = "https://www.figma.com/files/team/1026457890217412235/Co-Life?fuid=1043898222873738095"
+    $work_link_5 = "http://app.colifelabs.net/";
+    $work_link_6 = "https://api.colifelabs.net/";
+    $car1 = "https://divar.ir/s/tehran/car/hyundai/santafe-ix45/2400cc?brand_model=Hyundai%20Santafe%20ix45%202700cc%2CHyundai%20Santafe%20ix45%203500cc&production-year=1395-&business-type=personal";
+    $car2 = "https://divar.ir/s/tehran/car/hyundai/elantra/2000cc?brand_model=Hyundai%20Elantra%201600cc%2CHyundai%20Elantra%201800cc&production-year=1396-&business-type=personal";
+    $car3 = "https://divar.ir/s/tehran/car/kia/optima?production-year=1396-&business-type=personal";
+    $car4 = "https://divar.ir/s/tehran/car/bmw/5-series-sedan/528i?production-year=1392-&business-type=personal";
+    $car5 = "https://divar.ir/s/tehran/car/kia/cerato-ir/automatic-2000cc?brand_model=Kia%20Cerato-ir%20optional-automatic-2000cc&production-year=1397-&business-type=personal";
+    $car6 = "https://divar.ir/s/tehran/car/mazda/3n-sedan-ir?production-year=1398-&business-type=personal";
+    $car7 = "https://divar.ir/s/tehran/car/lexus/es?production-year=1393-&business-type=personal";
+    $car8 = "https://divar.ir/s/tehran/car/kia/sportage/gt-line-2400cc?production-year=1396-";
+    if ($colife) {
+        Start-Process -FilePath $chrome_exe -ArgumentList "--new-window",$work_link_1,$work_link_2,$work_link_3,$work_link_4,$work_link_5,$work_link_6;
+    } elseif ($car) {
+        Start-Process -FilePath $chrome_exe -ArgumentList "--new-window",$car1,$car2,$car3,$car4,$car5,$car6,$car7,$car8;
+    } else {
+        Start-Process $chrome_exe;
+    }
+}
+function todo {
+    $path = $env:ProgramFiles + "\Typora\Typora.exe";
+    $todoFile = $HOME + "\Documents\todo.md";
+    Start-Process $path $todoFile | Out-Null;
+}
+function editProfile () {
+    cd "C:\Users\kia-nasirzadeh\Documents\WindowsPowerShell";
+    edi -code;
+    Start-Process -FilePath 'C:\Program Files\Google\Chrome\Application\chrome.exe' -ArgumentList 'https://github.com/kia-nasirzadeh/newos';
+}
+function respectHosts () {
+    $path = $HOME + "\AppData\Local\Google\Chrome\User Data\Default\Visited Links";
+    Remove-Item $path;
+}
+
+public partial class MainWindow : Window {}
+public double someProperty;
