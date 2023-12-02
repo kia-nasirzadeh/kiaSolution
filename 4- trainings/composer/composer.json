@@ -1,0 +1,10 @@
+{
+    "name": "kia-nasirzadeh/composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "KiaNasirzadeh\\Composer\\": "src/"
+        }
+    },
+    "require": {}
+}
