@@ -1,0 +1,43 @@
+﻿<Window x:Class="ttrack.nemoodar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ttrack"
+        mc:Ignorable="d"
+        Title="nemoodar" Height="450" Width="800">
+    <Grid x:Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0"
+              Background="black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="red"></Grid>
+                <Grid Grid.Row="1" Background="blue"></Grid>
+                <Grid Grid.Row="2" Background="pink"></Grid>
+        </Grid>        
+        <Grid Grid.Row="0" Grid.Column="1"
+              Background="black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="red"></Grid>
+                <Grid Grid.Row="1" Background="blue"></Grid>
+        </Grid>
+    </Grid>
+</Window>

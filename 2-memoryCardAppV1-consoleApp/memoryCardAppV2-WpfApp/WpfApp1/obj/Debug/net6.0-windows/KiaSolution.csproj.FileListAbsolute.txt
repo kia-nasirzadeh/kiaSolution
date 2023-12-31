@@ -2,7 +2,6 @@ C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\KiaSolution.deps.json
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\KiaSolution.runtimeconfig.json
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\KiaSolution.dll
-C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\ref\KiaSolution.dll
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\KiaSolution.pdb
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\SQLite-net.dll
@@ -52,3 +51,7 @@ C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\Main.baml
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\TableManager.baml
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\KiaSolution_Content.g.cs
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\KiaSolution.sourcelink.json
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\refint\KiaSolution.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\ChangeDb.g.cs
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\ChangeDb.baml

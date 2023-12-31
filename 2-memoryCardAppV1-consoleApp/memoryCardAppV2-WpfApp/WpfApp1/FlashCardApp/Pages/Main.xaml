@@ -77,7 +77,8 @@
                    Background="black"/>
         </DockPanel>
         <TextBlock Grid.Row="1" Grid.Column="0" x:Name="questionBox"
-               Background="#EAEBEB"
+               Background="black"
+               Foreground="white"
                TextWrapping="WrapWithOverflow"
                FontSize="17.5">
         </TextBlock>
@@ -89,12 +90,14 @@
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Visible"
                  AcceptsReturn="True"
-                 Background="#EAEBEB"/>
+                 Foreground="white"
+                 Background="black"/>
         <TextBlock Grid.Row="1" Grid.Column="2" x:Name="dbAnswerBox"
                  Padding="2"
                  FontSize="20"
                  TextWrapping="Wrap"
-                 Background="#EAEBEB"/>
+                 Foreground="white"
+                 Background="black"/>
         <UniformGrid Grid.Row="2" Grid.ColumnSpan="3"
                      Columns="4">
             <Button Content="show answer (1)" x:Name="showBtn"

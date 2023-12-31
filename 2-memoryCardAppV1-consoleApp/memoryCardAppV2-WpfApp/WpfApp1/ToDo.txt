@@ -1,2 +1,11 @@
 ﻿1- application doesn't close with cross sign, the operation still is open in task manager
 2- next beside last flashCard, aslo next flash card should be ready for fast paging
+3- pictures plugin using url (remote hosted pics)
+4- lyrics plugin using url (remote hosted songs)
+5- skip button
+6- paging in main page
+7- scroller for answer place
+8- changing parts with auto save for next use
+9- automatic pdf builder of the questions that you coudn't answer performed using 53 instead of 3
+10- flashCards shouldn't been deleted after they reach the end, they should moved to another table, so you can find them with searching your database
+11- if you delete a flashCard after ending reach, then you want to use "see the latest flashCard button" application crashes and blows up

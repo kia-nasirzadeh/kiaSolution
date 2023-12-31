@@ -1,0 +1,110 @@
+Object Oriented PHP & MVC:
+https://www.udemy.com/course/object-oriented-php-mvc/
+____________________________________________________________________________________________________________________________________________________
+Data Structure Tutorial: learn what is heap and stack and ...
+https://www.simplilearn.com/tutorials/data-structure-tutorial?source=sl_frs_nav_playlist_video_clicked
+____________________________________________________________________________________________________________________________________________________
+
+Build a Complete Registration and Login System using PHP MVC
+https://www.udemy.com/course/php-mvc-login/
+____________________________________________________________________________________________________________________________________________________
+learn Laravel, vue, gulp, mvc, oop, php, zurp
+https://www.udemy.com/course/the-complete-php-mvc-course-build-a-modern-php-ecommerce-store/
+____________________________________________________________________________________________________________________________________________________
+Become a WordPress Developer: Unlocking Power With Code
+https://www.udemy.com/course/become-a-wordpress-developer-php-javascript/
+____________________________________________________________________________________________________________________________________________________
+Laravel & Realtime: Build Several Realtime Apps with Laravel
+Build realtime notifications, games, chat rooms, and more realtime applications with Laravel and Websockets.
+https://www.udemy.com/course/laravel-realtime-create-multiple-realtime-applications-with-laravel/
+____________________________________________________________________________________________________________________________________________________
+GitLab CI: Pipelines, CI/CD and DevOps for Beginners
+https://www.udemy.com/course/gitlab-ci-pipelines-ci-cd-and-devops-for-beginners/
+____________________________________________________________________________________________________________________________________________________
+Learn DevOps: Docker, Kubernetes, Terraform and Azure DevOps
+https://www.udemy.com/course/devops-with-docker-kubernetes-and-azure-devops/
+____________________________________________________________________________________________________________________________________________________
+google IT professional
+____________________________________________________________________________________________________________________________________________________
+CEH by jadi
+____________________________________________________________________________________________________________________________________________________
+ASP.NET and csprfflskjdf!!!
+____________________________________________________________________________________________________________________________________________________
+nodejs, express js, sockets, graphQL
+https://www.udemy.com/course/complete-nodejs-developer-zero-to-mastery/
+____________________________________________________________________________________________________________________________________________________
+react, file-upload
+https://www.udemy.com/course/react-nodejs-express-mongodb-the-mern-fullstack-guide/
+____________________________________________________________________________________________________________________________________________________
+redux:
+https://www.udemy.com/course/react-the-complete-guide-incl-redux/
+____________________________________________________________________________________________________________________________________________________
+angular:
+https://www.udemy.com/course/the-complete-guide-to-angular-2/
+____________________________________________________________________________________________________________________________________________________
+Angular & NodeJS - The MEAN Stack Guide
+https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/
+____________________________________________________________________________________________________________________________________________________
+socket io
+https://www.udemy.com/course/socketio-with-websockets-the-details/
+____________________________________________________________________________________________________________________________________________________
+web RTC:
+https://www.udemy.com/course/video-chat-app-learn-mern-stack-with-webrtc-and-socketio/
+____________________________________________________________________________________________________________________________________________________
+redis & socket
+https://www.udemy.com/course/web-application-development-using-redis-express-and-socket/
+____________________________________________________________________________________________________________________________________________________
+Progressive Web Apps (PWA) - The Complete Guide
+https://www.udemy.com/course/progressive-web-app-pwa-the-complete-guide/
+____________________________________________________________________________________________________________________________________________________
+ChatBots: Messenger ChatBot - DialogFlow and nodejs
+https://www.udemy.com/course/chatbots/
+____________________________________________________________________________________________________________________________________________________
+Go: The Complete Developer's Guide (Golang)
+https://www.udemy.com/course/go-the-complete-developers-guide/
+____________________________________________________________________________________________________________________________________________________
+Ethical Hacking Courses:
+https://www.udemy.com/topic/ethical-hacking/
+____________________________________________________________________________________________________________________________________________________
+MS-DOS Complete Course: from Zero to Professional!
+https://www.udemy.com/course/msdos-cmd/
+____________________________________________________________________________________________________________________________________________________
+Networking Essentials:
+https://www.udemy.com/course/networking-essentials/
+____________________________________________________________________________________________________________________________________________________
+ARP spoofing &Man In The Middle Attacks Execution & Detection
+https://www.udemy.com/course/learn-practical-attacks-against-network-clients/
+____________________________________________________________________________________________________________________________________________________
+Linux Administration: The Complete Linux Bootcamp for 2022
+https://www.udemy.com/course/master-linux-administration/
+=> learn about lsof, netstat, telnet, nmap, ss and ...
+____________________________________________________________________________________________________________________________________________________
+Learn Python & Ethical Hacking From Scratch
+https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/
+=> learn arp and both Python and hacking from scratch
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬QUESTIONS:
+----------------------------------------
+--------------------in terms of network:
+•
+when we request a page:
+we want request time
+we want server side time to respond
+we want responce time
+we want grab http message by php
+we want to get the whole size of responce and send it to client in first packet
+we want to analyze packets with tcpdump for example
+we want to make a loader in front-end not with xhr but for whole document
+•
+why we can listen to 127.0.0.1 on wsl and connect to it form powershell, but wise-versa is not true
+----------------------------------------
+---------------in terms of video codecs:
+i don't know what is a m3u8, ts, hsl, ffmpeg, N_m3u8DL-CLI_v3.0.2, ...
+• https://www.udemy.com/course/ffmpeg-the-complete-guide/
+project: download videos from ayabussinessScholl
+----------------------------------------
+select a text with javascript
+keypress with javascript
+utf vs utf8mb4
+----------------------------------------
+make default arguments for a function, which is the callback function for another function

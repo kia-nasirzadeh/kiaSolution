@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LUrrntnJL+u2qzDHmOYbzmitt27gHwlZ0moh/D0nKvNZhQThINvshOkob8Fiw5qp4JQEz3PSeqBi8AlQbbrc5w==",
+  "dgSpecHash": "zacA9OPSx19u3JWy2A+bo3RMIa4M0UIpbC19YptkCSjlpPLKsQpd8XBd1MgLbsguwLRrRWYSEzXRc+NZmBVnzg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kia-nasirzadeh\\Desktop\\kia\\2-memoryCardAppV1-consoleApp\\memoryCardAppV2-WpfApp\\WpfApp1\\KiaSolution.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,11 @@
     "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
-    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\kia-nasirzadeh\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
   ],
   "logs": []
 }

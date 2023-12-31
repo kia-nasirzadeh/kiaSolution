@@ -25,7 +25,7 @@ namespace WpfApp1.FlashCardApp
             InitializeComponent();
             DbFunctions.TableManagerWindow = this;
             WindowState = WindowState.Maximized;
-            xbody.Loaded += (s, e) => { questionBox.Focus(); };
+            //xbody.Loaded += (s, e) => { questionBox.Focus(); };
             xbody.Loaded += HandleEvents;
             xbody.Loaded += HandleSizes;
             DbFunctions.Paginate();

@@ -15,11 +15,12 @@ namespace WpfApp1
     public partial class App : Application
     {
         // database name:
-        static readonly string dbName = "kia";
+        public static readonly string dbName = "kia";
         // database folder:
         static readonly string dbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         // database path:
-        public static readonly string dbPath = System.IO.Path.Combine(dbFolder, "kia", "1-databases", dbName);
+        public static string dbPath = System.IO.Path.Combine(dbFolder, "kia", "1-databases", dbName);
+        public static readonly string dbPath_projects = System.IO.Path.Combine(dbFolder, "kia", "1-databases", "kia_projects");
     }
     
 }

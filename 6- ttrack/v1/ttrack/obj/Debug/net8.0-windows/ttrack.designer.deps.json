@@ -1,0 +1,111 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DotNetProjects.WpfToolkit.DataVisualization/6.1.94": {
+        "runtime": {
+          "lib/net6.0-windows7.0/DotNetProjects.DataVisualization.Toolkit.dll": {
+            "assemblyVersion": "6.1.94.0",
+            "fileVersion": "6.1.94.0"
+          }
+        }
+      },
+      "Hardcodet.NotifyIcon.Wpf/1.1.0": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Hardcodet.NotifyIcon.Wpf.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.17"
+          }
+        }
+      },
+      "Microsoft-WindowsAPICodePack-Core/1.1.5": {
+        "runtime": {
+          "lib/net7.0-windows7.0/Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.5.0",
+            "fileVersion": "1.1.5.0"
+          }
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.2": {
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.2.0",
+            "fileVersion": "1.1.2.0"
+          }
+        }
+      },
+      "WPFtoolkitFramework/1.0.7.5": {
+        "runtime": {
+          "lib/net45/WPFtoolkitFramework.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "WPFToolkits/3.5.50211.1": {
+        "runtime": {
+          "lib/System.Windows.Controls.Input.Toolkit.dll": {
+            "assemblyVersion": "3.5.40128.1",
+            "fileVersion": "3.5.50211.1"
+          },
+          "lib/System.Windows.Controls.Layout.Toolkit.dll": {
+            "assemblyVersion": "3.5.40128.1",
+            "fileVersion": "3.5.50211.1"
+          },
+          "lib/WPFToolkit.dll": {
+            "assemblyVersion": "3.5.40128.1",
+            "fileVersion": "3.5.50211.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DotNetProjects.WpfToolkit.DataVisualization/6.1.94": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5xmRUH+/F3zRxcI8b93W9OUvOUKXpcHShj7jGJdpBAgQTNPEeMLISA/wsO5egSG74Msx+01xwaYjDFTDTUawhQ==",
+      "path": "dotnetprojects.wpftoolkit.datavisualization/6.1.94",
+      "hashPath": "dotnetprojects.wpftoolkit.datavisualization.6.1.94.nupkg.sha512"
+    },
+    "Hardcodet.NotifyIcon.Wpf/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FFEkdRSidMrbMfQVwhCzq6KtSyR1qQojqtiUrkCyjnOOuMf7W3TNQkzFnBBxYxFe7uLk5mz7M38wFh1qdWyfvg==",
+      "path": "hardcodet.notifyicon.wpf/1.1.0",
+      "hashPath": "hardcodet.notifyicon.wpf.1.1.0.nupkg.sha512"
+    },
+    "Microsoft-WindowsAPICodePack-Core/1.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3feeT5wxrH/T4YmoZwCglVrUw6aS4+WJLA3FRADLVT2J85/zjptrCikvGNcLI1+gDeoI1AZ4w45gF2FvBv6eQw==",
+      "path": "microsoft-windowsapicodepack-core/1.1.5",
+      "hashPath": "microsoft-windowsapicodepack-core.1.1.5.nupkg.sha512"
+    },
+    "WindowsAPICodePack-Core/1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tGEkicg61OvHHuFyD4Vu8H4R0q5H1dlpN6fqjdYG+MGIp16znEVo/I+LhMTx3nKpM46reCcE6oC8fJqVJix2Bg==",
+      "path": "windowsapicodepack-core/1.1.2",
+      "hashPath": "windowsapicodepack-core.1.1.2.nupkg.sha512"
+    },
+    "WPFtoolkitFramework/1.0.7.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e1toFkSy4f78Uri2A19cTGURM3QitY2sIh0fDBRaSlt4QMgS/Rs93LwJ3Jya69j9S7OYAfuk0KGrL3UCgKSZZw==",
+      "path": "wpftoolkitframework/1.0.7.5",
+      "hashPath": "wpftoolkitframework.1.0.7.5.nupkg.sha512"
+    },
+    "WPFToolkits/3.5.50211.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CJ2hQCO4gBlMd4OyagGwVYETd99OsG0cn7d0ZlJFLlTK9R5qcLQp4R8+Tp3ZL6Lf3JxZhMTWWsJG0+4KJ97Spg==",
+      "path": "wpftoolkits/3.5.50211.1",
+      "hashPath": "wpftoolkits.3.5.50211.1.nupkg.sha512"
+    }
+  }
+}

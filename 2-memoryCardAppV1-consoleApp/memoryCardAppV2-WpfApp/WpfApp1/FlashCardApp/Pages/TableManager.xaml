@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1.FlashCardApp"
         mc:Ignorable="d"
         Title="TableManager" Height="450" Width="800">
-    <Grid>
+    <Grid Background="{StaticResource faded2}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -29,6 +29,8 @@
                Content="Answer:"/>
         <TextBox Grid.Row="1" Grid.Column="0" x:Name="questionBox"
                  Padding="10"
+                 Background="black"
+                 Foreground="white"
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto"
                  AcceptsReturn="True"
@@ -36,6 +38,8 @@
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="answerBox"
                  Padding="10"
                  Margin="10"
+                 Background="black"
+                 Foreground="white"
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto"
                  AcceptsReturn="True"/>
@@ -74,7 +78,7 @@
                         FontSize="20"
                         Content="RUN" 
                         Margin="0 0 10 0"
-                        Padding="5"/>
+                        Padding="5" IsDefault="True"/>
                 <Button DockPanel.Dock="Right" x:Name="abDirBtn"
                         Content="answerBox Direction" 
                         Margin="0 0 10 0"
@@ -86,22 +90,39 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="3">
-                <ListView x:Name="questionsListView"
+            <ListView x:Name="questionsListView"
+                          Background="{StaticResource faded2}"
                           SelectionChanged="TableManagerSelectionChanged">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
-                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource faded}"/>
                             <Setter Property="BorderThickness" Value="2 0 0 0"/>
-                            <Setter Property="Background" Value="{StaticResource faded}"/>
+                            <Setter Property="Background" Value="black"/>
+                            <Setter Property="Foreground" Value="white"/>
                             <Setter Property="Margin" Value="0 0 0 5"/>
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="MaxHeight" Value="45" />
                             <Setter Property="VerticalContentAlignment" Value="Top"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5e5e5e"/>
+                                    <Setter Property="Foreground" Value="white"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#262626"/>
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn x:Name="questionCol" Header="Question" DisplayMemberBinding="{Binding Question}" />
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="{StaticResource faded2}" />
+                                    <Setter Property="Foreground" Value="white" />
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn x:Name="questionCol" Header="Question" DisplayMemberBinding="{Binding Question}"/>
                             <GridViewColumn x:Name="answerCol" Header="Answer" DisplayMemberBinding="{Binding Answer}" />
                             <GridViewColumn x:Name="dateCol" Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
                             <GridViewColumn x:Name="operationCol" Header="Operations">
