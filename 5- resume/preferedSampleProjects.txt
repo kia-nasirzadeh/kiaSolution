@@ -1,3 +1,4 @@
-1- iranian history timeline
-2- git GUI
-3- reuse and remake old projects in old xampp and apache dashboard
+•- iranian history timeline
+•- git GUI
+•- git auto updater, a console application that can grab just one parameter which is just a path, like `git_auto_updater path a/b/c`, then with `git_auto_updater update` it should return 1 or 0, if 1 new changes to that directory pushed automatically, if not it should return 0, then you can use 0 or 1 to use this into your wpf application
+•- reuse and remake old projects in old xampp and apache dashboard
