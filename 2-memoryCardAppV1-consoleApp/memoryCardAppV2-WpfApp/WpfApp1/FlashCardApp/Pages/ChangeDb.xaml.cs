@@ -40,5 +40,13 @@ namespace KiaSolution.FlashCardApp.Pages
             tbl_manager_window.Show();
             this.Close();
         }
+
+        private void Button_tmpdb_Click(object sender, RoutedEventArgs e)
+        {
+            App.dbPath = App.dbPath_tmpdb;
+            WpfApp1.FlashCardApp.TableManager tbl_manager_window = new();
+            tbl_manager_window.Show();
+            this.Close();
+        }
     }
 }
