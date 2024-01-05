@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Globalization;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace WpfApp1
 {
@@ -28,6 +29,35 @@ namespace WpfApp1
                 dtToReturn = string.Format("{0:0000}/{1:00}/{2:00}", persianCalendar.GetYear(gregorianDate), persianCalendar.GetMonth(gregorianDate), persianCalendar.GetDayOfMonth(gregorianDate));
             }
             return dtToReturn;
+        }
+        public static void GetText_openLinks (string text)
+        {
+            var matches = App.regex.Matches(text);
+            bool firstIteration = true;
+            foreach (Match match in matches)
+            {
+                var matchedString = match.ToString();
+                Regex regex = new(@"\w+[\%\+\=\-\:\/.\,\;\?\w]*");
+                var matchess = regex.Matches(matchedString);
+                var link = matchess[0].ToString();
+                link = "\"" + link + "\"";
+                //MessageBox.Show(link);
+                var process = new Process();
+                string linkToOpen = @"/C chrome " + link;
+                if (firstIteration)
+                {
+                    linkToOpen = @"/C chrome " + link + " --new-window";
+                    firstIteration = false;
+                }
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = linkToOpen,
+                    UseShellExecute = false,
+                };
+                process.StartInfo = startInfo;
+                process.Start();
+            }
         }
     }
 }

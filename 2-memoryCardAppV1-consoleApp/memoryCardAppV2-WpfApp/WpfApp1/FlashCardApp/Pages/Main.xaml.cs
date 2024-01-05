@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -160,7 +161,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementWrongAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "prev:❌";
+            lastAnswerStatus = "prev:" + Environment.NewLine + "❌";
             InitThisPageFlashCard();
         }
         private void AnsweredRight()
@@ -168,11 +169,12 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementRightAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "prev:✔️";
+            lastAnswerStatus = "prev:" + Environment.NewLine + "✔️";
             InitThisPageFlashCard();
         }
         private void ShowAnswer()
         {
+            if (answer.Contains("~[[")) CommonFunctions.GetText_openLinks(answer);
             dbAnswerBox.Text = answer;
         }
         //
@@ -193,6 +195,7 @@ namespace WpfApp1.FlashCardApp
                 return;
             }
             questionBox.Text = question;
+            if (question.Contains("~[[")) CommonFunctions.GetText_openLinks(question);
             answerBox.Text = "";
             dbAnswerBox.Text = "";
             userControlsTimeLine.FlashCard = fco.flashCard;

@@ -101,7 +101,12 @@ namespace WpfApp1.FlashCardApp
                 case "runBtn":
                     openMainWindow();
                     break;
-
+                case "openQuestionLinks":
+                    OpenQuestionLinks();
+                    break;
+                case "openAnswerLinks":
+                    OpenAnswerLinks();
+                    break;
             }
         }
         // declare partial methods:
@@ -136,6 +141,15 @@ namespace WpfApp1.FlashCardApp
             Main mainWindow2 = new (true);
             mainWindow2.Show();
             if (mainWindow2.noFlashCardForToday) mainWindow2.Close(); 
+            this.Close();
+        }
+        void OpenQuestionLinks()
+        {
+            CommonFunctions.GetText_openLinks(questionBox.Text);
+        }
+        void OpenAnswerLinks ()
+        {
+            CommonFunctions.GetText_openLinks(answerBox.Text);
         }
         public void Paginate ()
         {

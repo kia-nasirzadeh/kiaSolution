@@ -87,6 +87,14 @@
                         Content="questionBox Direction" 
                         Margin="0 0 10 0"
                         Padding="5"/>
+                <Button DockPanel.Dock="Right" x:Name="openAnswerLinks"
+                        Content="openAnswerLinks" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
+                <Button DockPanel.Dock="Right" x:Name="openQuestionLinks"
+                        Content="openQuestionLinks" 
+                        Margin="0 0 10 0"
+                        Padding="5"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="4" Grid.ColumnSpan="3">
