@@ -174,7 +174,16 @@ namespace WpfApp1.FlashCardApp
         }
         private void ShowAnswer()
         {
+            dbAnswerBox.FontFamily = new FontFamily("Segoe UI");
+            dbAnswerBox.FontSize = 20;
+            dbAnswerBox.Padding = new System.Windows.Thickness(2);
             if (answer.Contains("~[[")) CommonFunctions.GetText_openLinks(answer);
+            if (answer.Contains("~mono"))
+            {
+                dbAnswerBox.FontFamily = new FontFamily("Lucida Console");
+                dbAnswerBox.FontSize = 12;
+                answer = answer.Remove(answer.IndexOf("~mono"), answer.IndexOf("~mono") + 5);
+            }
             dbAnswerBox.Text = answer;
         }
         //

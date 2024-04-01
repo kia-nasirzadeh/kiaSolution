@@ -37,7 +37,7 @@ namespace WpfApp1
             foreach (Match match in matches)
             {
                 var matchedString = match.ToString();
-                Regex regex = new(@"\w+[\%\+\=\-\:\/.\,\;\?\w]*");
+                Regex regex = new(@"\w+[\%\+\=\-\:\/.\,\;\?\#\w]*");
                 var matchess = regex.Matches(matchedString);
                 var link = matchess[0].ToString();
                 link = "\"" + link + "\"";

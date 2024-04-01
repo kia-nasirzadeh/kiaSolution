@@ -9,3 +9,11 @@
 9- automatic pdf builder of the questions that you coudn't answer performed using 53 instead of 3
 10- flashCards shouldn't been deleted after they reach the end, they should moved to another table, so you can find them with searching your database
 11- if you delete a flashCard after ending reach, then you want to use "see the latest flashCard button" application crashes and blows up
+12- BUG-FOUND -> making new flash card will make empty flash card!
+when this happened?
+main fc questioner is open
+i opened table manager
+in fc-questioner i pressed 4 and copied sth
+i ended up making new flash card while (4 is open from last step)
+i pressed save
+and bug!, nothing happened
