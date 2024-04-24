@@ -6,7 +6,9 @@
 •- a telegram bot that will set your ip, then you'll be okay to go to that website
 •- sample youtube video downloader software
 •- sample youtube video trimmer software
-•- sample electron desktop application that can: → read "art of war" + read "longman dictionary"
+•- sample electron desktop application that can: → read "art of war" + read "longman 
+•- dictation app - some one speak and you should write the dictation
+dictionary"
 1- add a pdf into it
 2- select a page
 3- draw cubes on that page
