@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,6 +102,9 @@ namespace WpfApp1.FlashCardApp
                 case "runBtn":
                     openMainWindow();
                     break;
+                case "copyNextsBtn":
+                    copyNexts();
+                    break;
                 case "openQuestionLinks":
                     OpenQuestionLinks();
                     break;
@@ -142,6 +146,10 @@ namespace WpfApp1.FlashCardApp
             mainWindow2.Show();
             if (mainWindow2.noFlashCardForToday) mainWindow2.Close(); 
             this.Close();
+        }
+        void copyNexts()
+        {
+            DbFunctions.GetNextQuestions(100);
         }
         void OpenQuestionLinks()
         {

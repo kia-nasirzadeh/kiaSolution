@@ -79,6 +79,13 @@
                         Content="RUN" 
                         Margin="0 0 10 0"
                         Padding="5" IsDefault="True"/>
+                <Button DockPanel.Dock="Right" x:Name="copyNextsBtn"
+                        Background="DodgerBlue"
+                        Foreground="white"
+                        FontSize="20"
+                        Content="copyNexts" 
+                        Margin="0 0 10 0"
+                        Padding="5" IsDefault="True"/>
                 <Button DockPanel.Dock="Right" x:Name="abDirBtn"
                         Content="answerBox Direction" 
                         Margin="0 0 10 0"

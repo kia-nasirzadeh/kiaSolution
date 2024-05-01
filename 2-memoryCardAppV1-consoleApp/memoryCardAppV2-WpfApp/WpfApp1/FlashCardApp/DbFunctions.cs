@@ -116,6 +116,36 @@ namespace WpfApp1.FlashCardApp
                 }
             }
         }
+        public static void GetNextQuestions(int nextFcCounts)
+        {
+            long todayLong = CommonFunctions.DateTimeToLong(DateTime.Today);
+            List<FlashCard> forTodayList = new();
+            string nextQuestions = "";
+            using (SQLiteConnection conn = new(App.dbPath))
+            {
+                try
+                {
+                    conn.CreateTable<FlashCard>();
+                    var nextFlashCards = (from fcc in conn.Table<FlashCard>()
+                                    where todayLong >= fcc.NextDay
+                                    select fcc).Take(nextFcCounts).ToList();
+
+                    for (int i = 0; i < nextFlashCards.Count; i++)
+                    {
+                        nextQuestions += "\n⬛" + i.ToString() + "🔲───────────────────────────⋆⋅☆⋅⋆───────────────────────────\n";
+                        nextQuestions += nextFlashCards[i].Question.ToString();
+                    }
+                    Clipboard.SetText(nextQuestions);
+                    MessageBox.Show("next questions ready to paste");
+                }
+                catch (SQLiteException ex)
+                {
+                    Trace.TraceError(ex.ToString());
+                    MessageBox.Show(ex.ToString());
+                    throw new Exception(ex.ToString());
+                }
+            }
+        }
         public static void ASCButton_Click ()
         {
             using (SQLiteConnection conn = new(App.dbPath))
