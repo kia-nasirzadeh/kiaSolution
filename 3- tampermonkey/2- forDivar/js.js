@@ -164,6 +164,8 @@
                     var phoneNumber = $(".kia-name-field").parent("td").next().html();
                     phoneNumber = $.trim(phoneNumber);
                     phoneNumber = TranslateNumberToEnglish(phoneNumber);
+                    //put phone number to clipboard:
+                    navigator.clipboard.writeText(phoneNumber);
                     $(".saveAsKaasebBtn").click(SaveAzKaaseb);
                     $(".editBtn").click(RemoveThisRow);
                     function SaveAzKaaseb () {
