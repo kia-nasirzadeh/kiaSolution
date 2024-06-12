@@ -1,0 +1,16 @@
+{
+  "name": "nodcon2",
+  "version": "1.0.0",
+  "description": "⚡ node .\r hello //in cyan\r are you ready to start?(Y/N) //in cyan\r n //in green\r bad news, bye //in cyan\r ⚡ node .\r hello //in cyan\r are you ready to start?(Y/N) //in cyan\r y //in green\r what is your name? //in cyan\r kia //in green\r fuck you kia //in cyan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}

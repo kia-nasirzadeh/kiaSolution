@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="FlashCardApp\Pages\ChangeDb.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FlashCardApp\Pages\EmptyMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FlashCardApp\Pages\FlashCardEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FlashCardApp\Pages\TableManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FlashCardApp\UserControls\MainTopMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FlashCardApp\UserControls\TimeLine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="FlashCardApp\Pages\ChangeDb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\Pages\EmptyMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\Pages\FlashCardEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\Pages\Main.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\Pages\TableManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\UserControls\MainTopMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FlashCardApp\UserControls\TimeLine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

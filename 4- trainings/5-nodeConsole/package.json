@@ -1,0 +1,21 @@
+{
+  "name": "nodecon",
+  "version": "1.0.0",
+  "description": "we want to make a console app to respond like this:\r 1-\r ⚡ node .\r you should choose a name it is required field\r you can read help:\r Usage: say hello to someone",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "helllo": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^7.1.1",
+    "chalk": "^5.3.0",
+    "yargs": "^17.7.2"
+  },
+  "type": "module"
+}

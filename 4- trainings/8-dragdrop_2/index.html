@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dragdrop_2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row p-2" id="mainc">
+            <div id="droppable" class="col-12 border rounded bg-light pt-2 pb-5 d-flex justify-content-center align-items-center flex-column text-muted" style="height: 200px;">
+                <div class="text-center pt-4">
+                    <i class="fa fa-3x fa-file mb-2"></i><br>
+                    <span>drop your files here</span><br>
+                    <input type="file" name="" id="fileinp" class="d-none">
+                    <small>Or <label class="text-primary" for="fileinp" type="button">choose your files</label></small>
+                </div>
+            </div>
+            <div class="filec col-12 border rounded bg-dark pl-2 p-1 text-white mt-1">
+                a.txt
+            </div>
+        </div>
+    </div>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/jquery-ui/dist/jquery-ui.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

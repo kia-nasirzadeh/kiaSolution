@@ -1,0 +1,17 @@
+﻿<Application x:Class="WpfApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             StartupUri="FlashCardApp/Pages/ChangeDb.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="dodgerblue" Color="DodgerBlue"/>
+        <SolidColorBrush x:Key="primary" Color="#0275d8" />
+        <SolidColorBrush x:Key="success" Color="#5cb85c" />
+        <SolidColorBrush x:Key="info" Color="#5bc0de" />
+        <SolidColorBrush x:Key="warning" Color="#f0ad4e" />
+        <SolidColorBrush x:Key="danger" Color="#d9534f" />
+        <SolidColorBrush x:Key="inverse" Color="#292b2c" />
+        <SolidColorBrush x:Key="faded" Color="#f7f7f7" />
+        <SolidColorBrush x:Key="faded2" Color="#3b3b3b" />
+    </Application.Resources>
+</Application>
