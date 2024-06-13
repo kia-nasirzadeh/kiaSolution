@@ -99,15 +99,17 @@
                  Foreground="white"
                  Background="black"/>
         <UniformGrid Grid.Row="2" Grid.ColumnSpan="3"
-                     Columns="4">
+                     Columns="5">
             <Button Content="show answer (1)" x:Name="showBtn"
-                    Background="{StaticResource info}"/>
+                    Background="{StaticResource dodgerblue}"/>
             <Button Content="answered right (2)" x:Name="answeredBtn"
                     Background="{StaticResource success}"/>
             <Button Content="wrong answer :) (3)" x:Name="failedBtn"
                     Background="{StaticResource danger}"/>
             <Button Content="manage this flash card (4)" x:Name="manageBtn"
                     Background="{StaticResource faded}"/>
+            <Button Content="skip (0)" x:Name="skipBtn"
+                    Background="{StaticResource warning}"/>
         </UniformGrid>
         <Grid Grid.Row="3" Grid.ColumnSpan="3">
             <UserControls:TimeLine x:Name="userControlsTimeLine" />

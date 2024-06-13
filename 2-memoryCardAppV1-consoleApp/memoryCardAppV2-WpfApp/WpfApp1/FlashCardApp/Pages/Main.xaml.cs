@@ -123,6 +123,9 @@ namespace WpfApp1.FlashCardApp
                 case "NumPad6":
                     latest_Click();
                     break;
+                case "NumPad0":
+                    Skip();
+                    break;
             }
         }
         void HandleClickingEvents (object sender, RoutedEventArgs e)
@@ -149,6 +152,9 @@ namespace WpfApp1.FlashCardApp
                 case "latest_btn":
                     latest_Click();
                     break;
+                case "skipBtn":
+                    Skip();
+                    break;
             }
         }
         private void ManageFlashCard()
@@ -170,6 +176,14 @@ namespace WpfApp1.FlashCardApp
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementRightAnswerFlashCardToDb(timeLine!);
             lastAnswerStatus = "prev:" + Environment.NewLine + "✔️";
+            InitThisPageFlashCard();
+        }
+        private void Skip()
+        {
+            string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
+            lastFlashCard = stringifiedFlashCard;
+            fco.ImplementSkipedFlashCardToDb(timeLine!);
+            lastAnswerStatus = "prev:" + Environment.NewLine + "⏳";
             InitThisPageFlashCard();
         }
         private void ShowAnswer()

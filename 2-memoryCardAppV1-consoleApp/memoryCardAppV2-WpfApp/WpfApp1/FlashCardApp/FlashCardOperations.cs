@@ -93,6 +93,26 @@ namespace WpfApp1.FlashCardApp
                 DbFunctions.RightAnswerToDb(flashCard);
             }
         }
+        public void ImplementSkipedFlashCardToDb (List<DateStepStatus> timeLine)
+        {
+            if (timeLine is null)
+            {
+                throw new Exception("timeline null in ImplementSkipedFlashCardToDb");
+            }
+            string timeLineAfterSkip = TimeLineFunctions.OperationOnTimeLine_skip(timeLine, out DateTime nextDay);
+            //MessageBox.Show(timeLineAfterSkip);
+            //Clipboard.SetText(timeLineAfterSkip);
+            flashCard!.TimeLine = timeLineAfterSkip;
+            flashCard!.NextDay = CommonFunctions.DateTimeToLong(nextDay);
+            if (timeLineAfterSkip == "")
+            {
+                MessageBox.Show("no timeline after skip should be empty string, if you see this, you are in a big problem");
+            }
+            else
+            {
+                DbFunctions.RightAnswerToDb(flashCard); // RightAnswerToDb and WrongAnswerToDb is same and SkipAnswerToDb will be same, so we didn't create that again
+            }
+        }
         public void ImplementWrongAnswerFlashCardToDb(List<DateStepStatus> timeLine)
         {
             if (timeLine is null)

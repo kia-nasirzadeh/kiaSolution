@@ -165,7 +165,7 @@ namespace WpfApp1.FlashCardApp
             var betweenDays = (DateTime.Today - (DateTime)furthestDateTime).TotalDays;
             int maxStep = FindMaximumStep(betweenDays);
             if (maxStep == -1) throw new Exception("flash card is wrongly opened, it ended and you should not be here");
-            List<DateStepStatus> newTimeline = new();
+            List<DateStepStatus> newTimeline = new(); // old timeline with only former DateStepStatus
             for (int i = 0; i < timeLine!.Count; i++)
             {
                 DateTime dateTime = timeLine[i].dateTime;
@@ -180,14 +180,14 @@ namespace WpfApp1.FlashCardApp
             int index = rawSteps.FindIndex(a => a.ToString().Contains(maxStep.ToString()));
             for (int i = index; i < 8; i++)
             {
-                if (i == index)
+                if (i == index) // here is Today
                 {
                     DateStepStatus dateStepStatus_ = new DateStepStatus() { dateTime = DateTime.Today, stepStatus = new StepStatus() { Step = rawSteps[i], Status = Status.Succeed } };
                     rawStepsItems.Add(dateStepStatus_);
                 } else
                 {
                     int daysToAdd = 0;
-                    for (int j = index; j < i; j++)
+                    for (int j = index; j < i; j++) // here is next days
                     {
                         daysToAdd += rawSteps[j + 1];
                     }
@@ -195,11 +195,11 @@ namespace WpfApp1.FlashCardApp
                     rawStepsItems.Add(dateStepStatus_);
                 }
             }
-            for (int i = 0; i < rawStepsItems.Count; i++)
+            for (int i = 0; i < rawStepsItems.Count; i++) // in loop vase ine ke nextDay peyda beshe va baghieye newTimeLine saakhte beshe
             {
-                if (i == 0) rawStepsItems[i].stepStatus!.Status = Status.Succeed;
-                if (i == 0 && rawStepsItems.Count == 1) nextDay = DateTime.UnixEpoch;
-                if (i == 1) nextDay = rawStepsItems[i].dateTime;
+                if (i == 0) rawStepsItems[i].stepStatus!.Status = Status.Succeed; // this seems that is happening twice
+                if (i == 0 && rawStepsItems.Count == 1) nextDay = DateTime.UnixEpoch; // yek rooz moonde bood k oonm success shod pas dg tamoome
+                if (i == 1) nextDay = rawStepsItems[i].dateTime; // nextDay ro baraye step e badi tarid mikonim
                 newTimeline.Add(rawStepsItems[i]);
             }
             if (nextDay == DateTime.MaxValue) throw new Exception("next day have not been set right!");
@@ -214,6 +214,37 @@ namespace WpfApp1.FlashCardApp
                 return stringifiedTimeline;
             }
         }
+        public static string OperationOnTimeLine_skip(List<DateStepStatus> timeLine, out DateTime nextDay)
+        {
+            nextDay = DateTime.MaxValue;
+            DateTime? lastStepDateTime = FindLastStep(timeLine);
+            if (lastStepDateTime is null) throw new Exception("lastStepDateTime is null - OperationOnTimeLine_fail");
+            for (int i = 0; i < timeLine.Count; i++)
+            {
+                DateTime dateTime = timeLine[i].dateTime;
+                StepStatus? timeLine_i = timeLine[i].stepStatus;
+                if (lastStepDateTime == dateTime) // today
+                {
+                    if (timeLine_i is not null)
+                    {
+                        timeLine_i.Status = Status.Absent;
+                    }
+                }
+                else if (lastStepDateTime > dateTime) // former absent days
+                {
+                    if (timeLine_i is not null)
+                    {
+                        if (timeLine_i.Status == Status.NotReached) timeLine_i.Status = Status.Absent;
+                    }
+                }
+            }
+
+            
+            nextDay = DateTime.Today.AddDays(1);
+            if (nextDay == DateTime.MaxValue) throw new Exception("next day have not been set right!");
+            var stringifiedTimeline = CodeTimeLine(timeLine);
+            return stringifiedTimeline;
+        }
         public static string OperationOnTimeLine_fail(List<DateStepStatus> timeLine, out DateTime nextDay)
         {
             nextDay = DateTime.MaxValue;
@@ -223,21 +254,21 @@ namespace WpfApp1.FlashCardApp
             {
                 DateTime dateTime = timeLine[i].dateTime;
                 StepStatus? timeLine_i = timeLine[i].stepStatus;
-                if (lastStepDateTime == dateTime)
+                if (lastStepDateTime == dateTime) // today
                 {
                     if (timeLine_i is not null)
                     {
                         timeLine_i.Status = Status.Failed;
                     }
                 }
-                else if (lastStepDateTime > dateTime)
+                else if (lastStepDateTime > dateTime) // former absent days
                 {
                     if (timeLine_i is not null)
                     {
                         if (timeLine_i.Status == Status.NotReached) timeLine_i.Status = Status.Absent;
                     }
                 }
-                else if (lastStepDateTime < dateTime)
+                else if (lastStepDateTime < dateTime) // coming days
                 {
                     timeLine.RemoveAt(i);
                     i -= 1;
