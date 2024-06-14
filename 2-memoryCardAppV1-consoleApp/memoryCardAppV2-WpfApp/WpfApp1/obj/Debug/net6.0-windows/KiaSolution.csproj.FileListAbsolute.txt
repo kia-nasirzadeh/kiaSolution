@@ -55,3 +55,5 @@ C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\refint\KiaSolution.dll
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\ChangeDb.g.cs
 C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\obj\Debug\net6.0-windows\FlashCardApp\Pages\ChangeDb.baml
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\kia-nasirzadeh\Desktop\kia\2-memoryCardAppV1-consoleApp\memoryCardAppV2-WpfApp\WpfApp1\bin\Debug\net6.0-windows\itextsharp.dll

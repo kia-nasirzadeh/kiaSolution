@@ -7,11 +7,39 @@ using System.Windows;
 using System.Globalization;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace WpfApp1
 {
     internal class CommonFunctions
     {
+        public static void ConvertTextToPdf(string textFilePath, string pdfFilePath)
+        {
+            // Read text file content
+            string textContent = File.ReadAllText(textFilePath);
+            // Create a new document
+            Document doc = new Document(PageSize.A4);
+
+            try
+            {
+                // Define a writer for the PDF
+                PdfWriter.GetInstance(doc, new FileStream(pdfFilePath, FileMode.Create));
+                doc.Open();
+
+                // Add text content to the PDF (replace with your formatting logic)
+                float fontSize = 11;
+                iTextSharp.text.Paragraph paragraph = new(textContent, new Font(Font.FontFamily.HELVETICA, fontSize));
+                doc.Add(paragraph);
+                doc.Close();
+            }
+            catch (Exception ex)
+            {
+                // Handle potential exceptions during PDF creation
+                MessageBox.Show("Error creating PDF: " + ex.Message);
+            }
+        }
         public static long DateTimeToLong (DateTime dt)
         {
             long unixDateTime = ((DateTimeOffset)dt).ToUnixTimeSeconds();

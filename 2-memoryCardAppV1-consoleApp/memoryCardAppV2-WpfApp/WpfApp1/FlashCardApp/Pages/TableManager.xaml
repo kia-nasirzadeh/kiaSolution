@@ -93,6 +93,27 @@
                         Content="copyNext500" 
                         Margin="0 0 10 0"
                         Padding="5" IsDefault="True"/>
+                <Button DockPanel.Dock="Right" x:Name="openWrongsFile"
+                        Background="BlueViolet"
+                        Foreground="white"
+                        FontSize="20"
+                        Content="openWrongsFile" 
+                        Margin="0 0 10 0"
+                        Padding="5" IsDefault="True"/>
+                <Button DockPanel.Dock="Right" x:Name="wipeWrongsFile"
+                        Background="#FF6B3F94"
+                        Foreground="white"
+                        FontSize="20"
+                        Content="wipeWrongsFile" 
+                        Margin="0 0 10 0"
+                        Padding="5" IsDefault="True"/>
+                <Button DockPanel.Dock="Right" x:Name="createPdf"
+                        Background="#FF8B5EB5"
+                        Foreground="white"
+                        FontSize="20"
+                        Content="createPDF" 
+                        Margin="0 0 10 0"
+                        Padding="5" IsDefault="True"/>
                 <Button DockPanel.Dock="Right" x:Name="abDirBtn"
                         Content="answerBox Direction" 
                         Margin="0 0 10 0"

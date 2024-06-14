@@ -23,6 +23,8 @@ namespace WpfApp1
         public static readonly string dbPath_projects = System.IO.Path.Combine(dbFolder, "kia", "1-databases", "kia_projects");
         public static readonly string dbPath_tmpdb = System.IO.Path.Combine(dbFolder, "kia", "1-databases", "tmp_db");
         public static readonly System.Text.RegularExpressions.Regex regex = new(@"\~\[\[\w+[\%\+\=\-\:\/.\,\;\?\#\w]*\]\]");
+        public static string appRootPath = "C:\\Users\\kia-nasirzadeh\\Desktop\\kia\\2-memoryCardAppV1-consoleApp\\memoryCardAppV2-WpfApp\\WpfApp1\\";
+        public static string userDesktopPath = "C:\\Users\\kia-nasirzadeh\\Desktop\\";
     }
     
 }

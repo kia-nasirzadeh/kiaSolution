@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf.parser;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 using WpfApp1;
 
 namespace WpfApp1.FlashCardApp
@@ -114,7 +116,43 @@ namespace WpfApp1.FlashCardApp
                 case "openAnswerLinks":
                     OpenAnswerLinks();
                     break;
+                case "openWrongsFile":
+                    OpenWrongsFile();
+                    break;
+                case "wipeWrongsFile":
+                    WipeWrongsFile();
+                    break;
+                case "createPdf":
+                    CreatePdf();
+                    break;
+                
             }
+        }
+        void CreatePdf ()
+        {
+            string pdffilePath = App.userDesktopPath + "wrongs.pdf";
+            CommonFunctions.ConvertTextToPdf(App.appRootPath + "wrongs.txt", pdffilePath);
+        }
+        void WipeWrongsFile ()
+        {
+            string textToWrite = "";
+            string filePath = App.appRootPath + "wrongs.txt";
+            File.WriteAllText(filePath, textToWrite);
+        }
+        void OpenWrongsFile ()
+        {
+            var process = new Process();
+            string command = "/C notepad.exe \"" + App.appRootPath + "\\wrongs.txt\"";
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = command,
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+            process.StartInfo = startInfo;
+            process.Start();
+            process.Close();
         }
         // declare partial methods:
         public void EditBtnClicked(object sender, RoutedEventArgs e)

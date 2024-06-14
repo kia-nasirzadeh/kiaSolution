@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,7 @@ namespace WpfApp1.FlashCardApp
         string answer;
         string total;
         string qaToCopy;
+        string qaToCopyForWrongsFile;
         string? lastFlashCard = null;
         string lastAnswerStatus = "undefined";
         bool instantiatedFromTableManager = false;
@@ -101,6 +103,9 @@ namespace WpfApp1.FlashCardApp
             //}
             switch (e.Key.ToString())
             {
+                case "NumPad0":
+                    Skip();
+                    break;
                 case "NumPad1":
                     ShowAnswer();
                     break;
@@ -122,9 +127,6 @@ namespace WpfApp1.FlashCardApp
                     break;
                 case "NumPad6":
                     latest_Click();
-                    break;
-                case "NumPad0":
-                    Skip();
                     break;
             }
         }
@@ -164,12 +166,24 @@ namespace WpfApp1.FlashCardApp
         }
         private void FailedAnswer()
         {
+            // add wrong q&a to wongs.txt --start section
+            AppendToWrongsFile(qaToCopyForWrongsFile);
+            // --end section
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementWrongAnswerFlashCardToDb(timeLine!);
             lastAnswerStatus = "prev:" + Environment.NewLine + "❌";
             InitThisPageFlashCard();
         }
+        public void AppendToWrongsFile(string textToWrite)
+        {
+            string filePath = App.appRootPath + "wrongs.txt";
+            using (StreamWriter writer = new StreamWriter(filePath, true)) // Set append mode to true
+            {
+                writer.WriteLine(textToWrite);
+            }
+        }
+        
         private void AnsweredRight()
         {
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
@@ -224,6 +238,7 @@ namespace WpfApp1.FlashCardApp
             userControlsTimeLine.FlashCard = fco.flashCard;
             answer = fco.GetAnswer();
             qaToCopy = question + "\n╟╟────────────────────────────────────────╢╢\n╟╟────────────────────────────────────────╢╢\n" + answer;
+            qaToCopyForWrongsFile = question + "\n╟+-+-+-+-+-+-+-+-+-+-+-╢\n" + answer + "\n╟╟—————————————————————————————╢╢\n╟╟—————————————————————————————╢╢\n";
 
             var totalRemainingFlashCards = fco.totalFlashCardsCountForToday;
             total = (string)totalRemainingFlashCards.ToString();
