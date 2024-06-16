@@ -278,7 +278,7 @@ namespace WpfApp1.FlashCardApp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/KiaSolution;component/flashcardapp/pages/main.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/KiaSolution;V1.0.0.0;component/flashcardapp/pages/main.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\FlashCardApp\Pages\Main.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
