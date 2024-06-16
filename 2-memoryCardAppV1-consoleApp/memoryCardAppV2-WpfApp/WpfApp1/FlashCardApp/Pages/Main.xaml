@@ -43,13 +43,13 @@
             <ColumnDefinition x:Name="mainGridColumn3" Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition x:Name="mainGridRow1" Height="1*"/>
+            <RowDefinition x:Name="mainGridRow2" Height="14*"/>
+            <RowDefinition x:Name="mainGridRow3" Height="1*"/>
+            <RowDefinition x:Name="mainGridRow4" Height="2*"/>
         </Grid.RowDefinitions>
-        <UserControls:MainTopMenu Grid.Row="0" Grid.ColumnSpan="2" />
-        <DockPanel Grid.Row="0" Grid.Column="2"
+        <UserControls:MainTopMenu Grid.Row="0" Grid.ColumnSpan="2" x:Name="topLeftPanel"/>
+        <DockPanel Grid.Row="0" Grid.Column="2" Name="topRightPanel"
                    LastChildFill="False"
                    Background="#ABB0B0" >
             <Button DockPanel.Dock="Left" x:Name="undo_btn"
@@ -100,7 +100,7 @@
                      Foreground="white"
                      Background="black"/>
         <UniformGrid Grid.Row="2" Grid.ColumnSpan="3"
-                     Columns="5">
+                     Columns="5" Name="buttons">
             <Button Content="show answer (1)" x:Name="showBtn"
                     Background="{StaticResource dodgerblue}"/>
             <Button Content="answered right (2)" x:Name="answeredBtn"
@@ -112,7 +112,7 @@
             <Button Content="skip (0)" x:Name="skipBtn"
                     Background="{StaticResource warning}"/>
         </UniformGrid>
-        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Name="timelinePanel">
             <UserControls:TimeLine x:Name="userControlsTimeLine" />
         </Grid>
     </Grid>

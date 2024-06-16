@@ -38,6 +38,7 @@ namespace WpfApp1.FlashCardApp
         string? lastFlashCard = null;
         string lastAnswerStatus = "undefined";
         bool instantiatedFromTableManager = false;
+        bool fullscreen = false;
         public bool noFlashCardForToday = false;
         List<DateStepStatus>? timeLine;
         List<DateStepStatus> timeLineToShow;
@@ -47,6 +48,12 @@ namespace WpfApp1.FlashCardApp
             InitializeComponent();
             if (instantiatedFromTableManager) this.instantiatedFromTableManager = true;
             WindowState = WindowState.Maximized;
+            //var workArea = SystemParameters.WorkArea;
+            //xbody.Left = 0;
+            //xbody.Top = 0;
+            //xbody.Width = workArea.Width;
+            //xbody.Height = workArea.Height;
+
             xbody.Loaded += StartApp;
             xbody.Loaded += HandleEvents;
             InitThisPageFlashCard();
@@ -128,6 +135,9 @@ namespace WpfApp1.FlashCardApp
                 case "NumPad6":
                     latest_Click();
                     break;
+                case "NumPad9":
+                    ToggleFullScreen();
+                    break;
             }
         }
         void HandleClickingEvents (object sender, RoutedEventArgs e)
@@ -157,6 +167,37 @@ namespace WpfApp1.FlashCardApp
                 case "skipBtn":
                     Skip();
                     break;
+            }
+        }
+        void ToggleFullScreen()
+        {
+            WindowState = WindowState.Normal;
+            if (fullscreen) // already in fullscreen mode, go out
+            {
+                WindowState = WindowState.Maximized;
+                xbody.WindowStyle = WindowStyle.SingleBorderWindow;
+                buttons.Visibility = Visibility.Visible;
+                timelinePanel.Visibility = Visibility.Visible;
+                topRightPanel.Visibility = Visibility.Visible;
+                topLeftPanel.Visibility = Visibility.Visible;
+                mainGridRow1.Height = new GridLength(1, GridUnitType.Star);
+                mainGridRow2.Height = new GridLength(14, GridUnitType.Star);
+                mainGridRow3.Height = new GridLength(1, GridUnitType.Star);
+                mainGridRow4.Height = new GridLength(2, GridUnitType.Star);
+                fullscreen = false;
+            } else // already in normal mode, go fullscreen
+            {
+                xbody.WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+                buttons.Visibility = Visibility.Hidden;
+                timelinePanel.Visibility = Visibility.Hidden;
+                topRightPanel.Visibility = Visibility.Hidden;
+                topLeftPanel.Visibility = Visibility.Hidden;
+                mainGridRow1.Height = new GridLength(0, GridUnitType.Star);
+                mainGridRow2.Height = new GridLength(1, GridUnitType.Star);
+                mainGridRow3.Height = new GridLength(0, GridUnitType.Star);
+                mainGridRow4.Height = new GridLength(0, GridUnitType.Star);
+                fullscreen = true;
             }
         }
         private void ManageFlashCard()
