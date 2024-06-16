@@ -20,6 +20,7 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -56,6 +57,7 @@ namespace WpfApp1.FlashCardApp
 
             xbody.Loaded += StartApp;
             xbody.Loaded += HandleEvents;
+            todayDate.Content = getTodayDate_persian();
             InitThisPageFlashCard();
         }
         void StartApp(object sender, RoutedEventArgs e)
@@ -167,6 +169,10 @@ namespace WpfApp1.FlashCardApp
                 case "skipBtn":
                     Skip();
                     break;
+                case "tableManagerBtn":
+                    TableManager tableManagerWindow = new();
+                    tableManagerWindow.Show();
+                    break;
             }
         }
         void ToggleFullScreen()
@@ -178,12 +184,35 @@ namespace WpfApp1.FlashCardApp
                 xbody.WindowStyle = WindowStyle.SingleBorderWindow;
                 buttons.Visibility = Visibility.Visible;
                 timelinePanel.Visibility = Visibility.Visible;
-                topRightPanel.Visibility = Visibility.Visible;
-                topLeftPanel.Visibility = Visibility.Visible;
                 mainGridRow1.Height = new GridLength(1, GridUnitType.Star);
                 mainGridRow2.Height = new GridLength(14, GridUnitType.Star);
                 mainGridRow3.Height = new GridLength(1, GridUnitType.Star);
                 mainGridRow4.Height = new GridLength(2, GridUnitType.Star);
+                answerBox.BorderThickness = new Thickness(5,0,0,0);
+                dbAnswerBox.BorderThickness = new Thickness(1);
+
+                topRightPanel.Background = (SolidColorBrush)FindResource("topMenuColor");
+                undo_btn.Padding = new Thickness(2);
+                undo_btn.Margin = new Thickness(10);
+                latest_btn.Padding = new Thickness(2);
+                latest_btn.Margin = new Thickness(0,10,10,10);
+                undo_btn.ClearValue(Button.BackgroundProperty);
+                latest_btn.ClearValue(Button.BackgroundProperty);
+                undo_btn.ClearValue(Button.ForegroundProperty);
+                latest_btn.ClearValue(Button.ForegroundProperty);
+                remainingQuestionLabel.Foreground = new SolidColorBrush(Colors.Black);
+                remainingQuestionLabel.Background = (SolidColorBrush)FindResource("topMenuColor");
+                remainingQuestionLabel.ClearValue(PaddingProperty);
+                remainingQuestionLabel.ClearValue(PaddingProperty);
+                lastAnswerLabel.Padding = new Thickness(10, 0, 10, 0);
+                lastAnswerLabel.ClearValue(MarginProperty);
+                topLeftPanel.Background = (SolidColorBrush)FindResource("topMenuColor");
+                tableManagerBtn.ClearValue(Button.BackgroundProperty);
+                tableManagerBtn.ClearValue(Button.ForegroundProperty);
+                tableManagerBtn.Padding = new Thickness(2);
+                tableManagerBtn.Margin = new Thickness(10);
+                todayDate.Foreground = new SolidColorBrush(Colors.Black);
+                todayDate.ClearValue(PaddingProperty);
                 fullscreen = false;
             } else // already in normal mode, go fullscreen
             {
@@ -191,12 +220,35 @@ namespace WpfApp1.FlashCardApp
                 WindowState = WindowState.Maximized;
                 buttons.Visibility = Visibility.Hidden;
                 timelinePanel.Visibility = Visibility.Hidden;
-                topRightPanel.Visibility = Visibility.Hidden;
-                topLeftPanel.Visibility = Visibility.Hidden;
-                mainGridRow1.Height = new GridLength(0, GridUnitType.Star);
-                mainGridRow2.Height = new GridLength(1, GridUnitType.Star);
+                mainGridRow1.Height = new GridLength(1, GridUnitType.Star);
+                mainGridRow2.Height = new GridLength(47, GridUnitType.Star);
                 mainGridRow3.Height = new GridLength(0, GridUnitType.Star);
                 mainGridRow4.Height = new GridLength(0, GridUnitType.Star);
+                answerBox.BorderThickness = new Thickness(0);
+                dbAnswerBox.BorderThickness = new Thickness(0);
+
+                topRightPanel.Background = new SolidColorBrush(Colors.Black);
+                undo_btn.Padding = new Thickness(0);
+                undo_btn.Margin = new Thickness(1);
+                latest_btn.Padding = new Thickness(0);
+                latest_btn.Margin = new Thickness(1);
+                undo_btn.Background = new SolidColorBrush(Colors.Black);
+                latest_btn.Background = new SolidColorBrush(Colors.Black);
+                undo_btn.Foreground = new SolidColorBrush(Colors.White);
+                latest_btn.Foreground = new SolidColorBrush(Colors.White);
+                remainingQuestionLabel.Foreground = new SolidColorBrush(Colors.White);
+                remainingQuestionLabel.Background = new SolidColorBrush(Colors.Black);
+                remainingQuestionLabel.Padding = new Thickness(0);
+                remainingQuestionLabel.Margin = new Thickness(0);
+                lastAnswerLabel.Padding = new Thickness(0);
+                lastAnswerLabel.Margin = new Thickness(0);
+                topLeftPanel.Background = new SolidColorBrush(Colors.Black);
+                tableManagerBtn.Background = new SolidColorBrush(Colors.Black);
+                tableManagerBtn.Foreground = new SolidColorBrush(Colors.White);
+                tableManagerBtn.Padding = new Thickness(0);
+                tableManagerBtn.Margin = new Thickness(0);
+                todayDate.Foreground = new SolidColorBrush(Colors.White);
+                todayDate.Padding = new Thickness(0);
                 fullscreen = true;
             }
         }
@@ -213,7 +265,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementWrongAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "prev:" + Environment.NewLine + "❌";
+            lastAnswerStatus = "❌";
             InitThisPageFlashCard();
         }
         public void AppendToWrongsFile(string textToWrite)
@@ -232,9 +284,9 @@ namespace WpfApp1.FlashCardApp
                 mainGridColumn3.Width = new System.Windows.GridLength(4, GridUnitType.Star);
             } else // asking
             {
+                mainGridColumn2.Width = new System.Windows.GridLength(1.5, GridUnitType.Star);
                 mainGridColumn2.Width = new System.Windows.GridLength(1.7, GridUnitType.Star);
-                mainGridColumn2.Width = new System.Windows.GridLength(1.7, GridUnitType.Star);
-                mainGridColumn3.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+                mainGridColumn3.Width = new System.Windows.GridLength(1.7, GridUnitType.Star);
             }
         }
         private void AnsweredRight()
@@ -242,7 +294,7 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementRightAnswerFlashCardToDb(timeLine!);
-            lastAnswerStatus = "prev:" + Environment.NewLine + "✔️";
+            lastAnswerStatus = "✔️";
             InitThisPageFlashCard();
         }
         private void Skip()
@@ -250,8 +302,26 @@ namespace WpfApp1.FlashCardApp
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
             lastFlashCard = stringifiedFlashCard;
             fco.ImplementSkipedFlashCardToDb(timeLine!);
-            lastAnswerStatus = "prev:" + Environment.NewLine + "⏳";
+            lastAnswerStatus = "⏳";
             InitThisPageFlashCard();
+        }
+        string getTodayDate_persian()
+        {
+            PersianCalendar pc = new();
+            string todayDate = pc.GetYear(DateTime.Today).ToString() + "/" + pc.GetMonth(DateTime.Today) + "/" + pc.GetDayOfMonth(DateTime.Today).ToString();
+            string dayOfWeek = pc.GetDayOfWeek(DateTime.Today).ToString();
+            switch (dayOfWeek)
+            {
+                case "Monday": dayOfWeek = "دوشنبه"; break;
+                case "Tuesday": dayOfWeek = "سه شنبه"; break;
+                case "Wednesday": dayOfWeek = "چهارشنبه"; break;
+                case "Thursday": dayOfWeek = "پنج شنبه"; break;
+                case "Friday": dayOfWeek = "جمعه"; break;
+                case "Saturday": dayOfWeek = "شنبه"; break;
+                case "Sunday": dayOfWeek = "یک شنبه"; break;
+            }
+            todayDate = $"امروز {dayOfWeek} {todayDate} است";
+            return todayDate;
         }
         private void ShowAnswer()
         {

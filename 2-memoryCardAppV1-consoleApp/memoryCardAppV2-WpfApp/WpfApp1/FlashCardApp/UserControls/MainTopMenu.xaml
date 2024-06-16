@@ -10,7 +10,7 @@
         <DockPanel Grid.Row="0" Grid.ColumnSpan="3"
                    LastChildFill="False" Background="#ABB0B0">
             <Button DockPanel.Dock="Left" Content="table manager" x:Name="tableManagerBtn"
-                    Padding="6" Margin="10"/>
+                    Padding="2" Margin="10"/>
             <Label DockPanel.Dock="Right" Name="todayDate"
                    Content="1234/12/3"
                    HorizontalContentAlignment="Center"
