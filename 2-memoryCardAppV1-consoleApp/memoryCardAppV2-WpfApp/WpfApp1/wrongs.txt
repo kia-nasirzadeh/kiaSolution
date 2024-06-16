@@ -1,7 +1,216 @@
+OpenDNS?
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+OpenDNS: 208.67.222.222, 208.67.220.220
+
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+how did you perform a system file checker on your windows? (2ways)
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+cmd -> as administrator:
+1- sfc /scannow
+2- DISM /Online /Cleanup-Image /ScanHealth
+/online->do on this running image
+/cleanup-image->perform maintenance operations
+/scanHealth->don't attempt to repair any discovered problems, just report the findings(×/RestoreHealth)
+-----------------------details:
+1. /Online:
+
+This switch specifies that the DISM (Deployment Image Servicing and Management) tool should work with the currently running Windows image instead of an offline image file. This is the most common use case for troubleshooting system issues.
+
+2. /Cleanup-Image:
+
+This switch tells the DISM tool to perform maintenance operations on the Windows image. It doesn't specify the exact operation itself, but further options like /ScanHealth or /RestoreHealth define the specific action.
+
+3. /ScanHealth:
+
+This option combined with /Cleanup-Image instructs DISM to scan the Windows image for corruption. It performs a thorough analysis of the system files and identifies any potential issues. This does not attempt to repair any discovered problems, but simply reports the findings.
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+1- اسپرسو
+2- دوپیو
+3- آمریکانو
+4- کاپوچینو
+5- لاته
+6- موکا
+7- کورتادو
+8- فلت وایت
+9- ماکیاتو
+10- کن پانا
+11- آفوگاتو
+12- آیریش
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+* Espresso = es
+* water = w
+* milk = m
+* milk foam = f
+* hotChocolate = c
+1- 1es ℹ️اسپرسو
+2- 2es ℹ️دوپیو
+3- 1es+2w ℹ️آمریکانو
+4- 1es+1m+1f ℹ️کاپوچینو
+5- 1es+1.5m+0.5f ℹ️لاته
+6- 1es+0.5c+0.5m+1f ℹ️موکا
+7- 1es+1m ℹ️کورتادو
+8- 1es+2m ℹ️فلت وایت
+9- 1es+1f ℹ️ماکیاتو
+10- 1es+2Khaame ℹ️کن پانا
+11- 2Bastani+1es ℹ️آفوگاتو
+12- 1es+0.5Sirop+1.5+Khaame ℹ️آیریش
+
+~[[https://docs.google.com/presentation/d/1ovjQ84LahEN9HcDEOG2ScGn3STM-V1bC5sJl3DeyqPk/edit?usp=sharing]]
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+what is a "zero variable" in a bat file?
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+%~dp0
+when referenced within a Windows batch file will expand to the 
+"d"rive letter and "p"ath of that batch file
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
 ICANN
 stands for ?
 ╟+-+-+-+-+-+-+-+-+-+-+-╢
 Internet Corporation for Assigned Names and Numbers
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+javascript:
+1- what is the meaning of anonymous function in javascript?
+2- const greet = function() { ... };
+3- what is the relation between anonymousity and arrow functions?
+4-
+$(x).change( function () { console.log(this) }) // 4-1, this->
+$(x).change( ()=>{ console.log(x) }) // 4-2, this->
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+1-
+"anonymous = unNamed"
+
+2-
+const greet = function() { ... };
+the anonymous function is assigned to the variable greet. The function is then called by invoking the greet() function
+
+3-
+All arrow functions are anonymous in JavaScript
+f=()=>{}
+f:()=>{}
+a.b(()=>{})
+not All anonymous functions are arrow functions in JavaScript
+a.b(function(){})
+f:function(){}
+f=fuction(){}
+
+4-
+4-1- $(x)
+4-2- windows
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+php:
+bundles?
+components?
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+bundle:
+the warpping "functionality" needed to plugin a module into app
+:: مثلا تو جاوا-اسکریپت به کمک باندلری مثل وبپک میتونیم هم از import و هم از  require استفاده کنیم
+component:
+group of classes (that achieve sth) into functional package
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+1-
+composer install
+2-
+composer update
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+1-
+✔️composer uses composer.lock.json
+2-
+composer will re-examine your composer.json and will re-generate the composer.lock.json
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+خل:
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+kook
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+1-
+composer install
+2-
+composer update
+•m
+•cfr
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+1-
+✔️composer uses composer.lock.json
+2-
+composer will re-examine your composer.json and will re-generate the composer.lock.json
+
+1- getcomposer.org
+2- Documentation
+3- Command-line interface / Commands
+4- 5. install / i and 6. update / u / upgrade
+-------------------hints-1:
+This is useful if you want to make a bugfix to a project and get a local git clone of the dependency directly.
+→ when you choose "source" the (un-compiled=human readable") version of the dependency package will be installed
+but in default we use "dist" which means to download .zip/.tar.gz files which are compiled versions of deps
+-------------------hints-2:
+--dry-run: If you want to run through an installation...
+This list might include:
+Package names and versions
+Whether a package would be newly installed, updated, or remain unchanged.
+Any potential conflicts or compatibility issues that might arise.
+--------------------hint-3:
+--audit: Run an audit after installation is complete.
+The --audit flag with composer install (or php composer.phar install) is an optional flag that instructs Composer to perform a security audit after installing the dependencies for your project.
+If a match is found, Composer will report details about the vulnerability, including:
+The name of the vulnerable package.
+The specific version(s) affected.
+A description of the vulnerability and its potential impact.
+(Sometimes) Links to resources or fixes for the vulnerability.
+----------------------hint-5:
+--optimize-autoloader (-o): Convert PSR-0/4 autoloading to classmap to get a faster autoloader...
+• PSR-0 uses underscores in namespaces to represent directory separators. (e.g., MyProject_Class located in MyProject/Class.php)
+• PSR-4 uses the full namespace as the directory structure, with the class name as the filename. (e.g., MyProject\Class located in MyProject/Class.php)
+• Classmap autoloading involves creating a static map that directly associates class names with their file path
+---------------------hint-6:
+--apcu-autoloader: Use APCu to cache found/not-found classes.
+APCu (Alternative PHP Cache) is a PHP extension that provides an opcode cache to improve application performance.
+It can store precompiled PHP code (opcodes) to reduce the overhead of compiling the code on every request.
+--------------------hint-7:
+--ignore-platform-reqs: ignore all platform requirements (php, hhvm, lib-* and ext-*) and force the installation even if the local machine does not fulfill these.
+→ Composer, by default, checks your system's environment against the requirements specified in your project's composer.json file. These requirements can include:
+
+PHP Version: The specific PHP version(s) your project is compatible with.
+PHP Extensions: Additional PHP libraries (like gd or mbstring) that your project needs to function.
+HHVM Compatibility (if applicable): HHVM is an alternative virtual machine for running PHP code.
+The --ignore-platform-reqs flag tells Composer to ignore all these platform requirements during the installation process.
+
+This means Composer will proceed with installing the dependencies even if your system doesn't meet the specified requirements.
+------------------hint-8:
+--lock: Overwrites the lock file hash to suppress warning about the lock file being out of date without updating package versions. Package metadata like mirrors and URLs are updated if they changed.
+Sometimes, you might modify your composer.json file to change package requirements or add new dependencies.
+However, if you don't run composer update immediately after these changes, the composer.lock file becomes outdated.
+When you run composer update later, Composer might display a warning message indicating that the composer.lock file is not up-to-date with the changes in composer.json.
+What --lock Does:
+
+The --lock flag with composer update tells Composer to update only the hash in the composer.lock file. This hash is used for internal verification purposes.
+It does not actually update the package versions themselves. These will remain based on the existing composer.lock file.
+------------------hint-9:
+--interactive: Interactive interface with autocompletion to select the packages to update.
+Interactive Update with --interactive:
+
+When you use composer update --interactive, Composer presents you with an interactive interface.
+This interface typically displays a list of all packages that have updates available.
+You can then use features like autocompletion to select the specific packages you want to update:
+Update All: You might have an option to update all packages at once.
+Update Specific Packages: You can choose individual packages to update from the list.
+Review Changes: You might be able to see details about the specific version changes for each package before updating.
 ╟╟—————————————————————————————╢╢
 ╟╟—————————————————————————————╢╢
 
