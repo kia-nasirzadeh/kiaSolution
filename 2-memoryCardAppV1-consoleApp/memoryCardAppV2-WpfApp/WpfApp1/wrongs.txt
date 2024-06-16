@@ -214,3 +214,42 @@ Review Changes: You might be able to see details about the specific version chan
 ╟╟—————————————————————————————╢╢
 ╟╟—————————————————————————————╢╢
 
+go away
+vs
+get away
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+دور شدن
+vs
+فرار کردن
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+how do you give a good speech in a meeting?
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+~[[https://docs.google.com/presentation/d/13XxYc5prBnB1yYcwGFrqcCEZ4N0P5q2SJIOIVTd45wg/edit#slide=id.g2c649e1700b_0_50]]
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+how tones turn into chars using budot code in a tty device?
+tones names should be reminded
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+there are two types of sounds:
+1- Mark=1
+2- Space=0
+so for example since A=11000
+Tone Sequence will be "mark-mark-space-space-space"
+so
+بوق_نوع_مارک بوق_نوع_مارک بوق_نوع_اسپیس بوق_نوع_اسپیس بوق_نوع_اسپیس
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
+what is :
+/usr/src
+╟+-+-+-+-+-+-+-+-+-+-+-╢
+ holds the 
+"linux kernel sources", 
+"header files" and 
+"documentations"
+╟╟—————————————————————————————╢╢
+╟╟—————————————————————————————╢╢
+
