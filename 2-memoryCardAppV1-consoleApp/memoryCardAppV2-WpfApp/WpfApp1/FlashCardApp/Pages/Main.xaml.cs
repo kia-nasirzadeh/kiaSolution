@@ -183,7 +183,19 @@ namespace WpfApp1.FlashCardApp
                 writer.WriteLine(textToWrite);
             }
         }
-        
+        void ChangeLayoutMode(string mode)
+        {
+            if (mode == "reading")
+            {
+                mainGridColumn2.Width = new System.Windows.GridLength(2, GridUnitType.Star);
+                mainGridColumn3.Width = new System.Windows.GridLength(4, GridUnitType.Star);
+            } else // asking
+            {
+                mainGridColumn2.Width = new System.Windows.GridLength(1.7, GridUnitType.Star);
+                mainGridColumn2.Width = new System.Windows.GridLength(1.7, GridUnitType.Star);
+                mainGridColumn3.Width = new System.Windows.GridLength(1, GridUnitType.Star);
+            }
+        }
         private void AnsweredRight()
         {
             string stringifiedFlashCard = JsonConvert.SerializeObject(fco.flashCard!);
@@ -202,9 +214,9 @@ namespace WpfApp1.FlashCardApp
         }
         private void ShowAnswer()
         {
+            ChangeLayoutMode("reading");
             dbAnswerBox.FontFamily = new FontFamily("Segoe UI");
             dbAnswerBox.FontSize = 20;
-            dbAnswerBox.Padding = new System.Windows.Thickness(2);
             if (answer.Contains("~[[")) CommonFunctions.GetText_openLinks(answer);
             if (answer.Contains("~mono"))
             {
@@ -217,6 +229,7 @@ namespace WpfApp1.FlashCardApp
         //
         private void ImplementAFlashCardOnPage (FlashCardOperations fcoo)
         {
+            ChangeLayoutMode("asking");
             lastAnswerLabel.Content = lastAnswerStatus;
             timeLine = fcoo.GetTimeLine();
             question = fcoo.GetQuestion();

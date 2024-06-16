@@ -38,9 +38,9 @@
     </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1.4*"/>
-            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition x:Name="mainGridColumn1" Width="1.7*"/>
+            <ColumnDefinition x:Name="mainGridColumn2" Width="1.7*"/>
+            <ColumnDefinition x:Name="mainGridColumn3" Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -78,26 +78,27 @@
         </DockPanel>
         <TextBlock Grid.Row="1" Grid.Column="0" x:Name="questionBox"
                Background="black"
-               Foreground="white"
+               Foreground="Lime"
                TextWrapping="WrapWithOverflow"
                FontSize="17.5">
         </TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="answerBox"
-                 Padding="2"
+                 Padding="10"
                  FontSize="20"
                  BorderBrush="#ABB0B0"
                  BorderThickness="5 0 0 0"
                  TextWrapping="Wrap"
-                 VerticalScrollBarVisibility="Visible"
+                 VerticalScrollBarVisibility="auto"
                  AcceptsReturn="True"
-                 Foreground="white"
+                 Foreground="Lime"
                  Background="black"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="dbAnswerBox"
-                 Padding="2"
-                 FontSize="20"
-                 TextWrapping="Wrap"
-                 Foreground="white"
-                 Background="black"/>
+        <TextBox Grid.Row="1" Grid.Column="2" x:Name="dbAnswerBox"
+                     Padding="10"
+                     VerticalScrollBarVisibility="auto"
+                     FontSize="20"
+                     TextWrapping="Wrap"
+                     Foreground="white"
+                     Background="black"/>
         <UniformGrid Grid.Row="2" Grid.ColumnSpan="3"
                      Columns="5">
             <Button Content="show answer (1)" x:Name="showBtn"

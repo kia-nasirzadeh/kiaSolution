@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KiaSolution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba396d366e1127e0bdc29e759aba41c90e173513")]
 [assembly: System.Reflection.AssemblyProductAttribute("KiaSolution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KiaSolution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
