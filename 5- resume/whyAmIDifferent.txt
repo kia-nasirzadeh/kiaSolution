@@ -4,3 +4,4 @@
 3-1- i know utf8 in allOverWorld is utf8mb4 in mysql
 3-2- 401-unathorized vs 403-forbidden
 3-3- n.fn.init jQuery.prototype.$
+3-4- I use string to store timestamp not int!
