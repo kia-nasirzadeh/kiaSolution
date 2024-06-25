@@ -8,6 +8,7 @@ using SQLite;
 using System.Globalization;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.IO;
 
 namespace WpfApp1.FlashCardApp
 {
@@ -19,9 +20,19 @@ namespace WpfApp1.FlashCardApp
         public static TableManager TableManagerWindow;
         static FlashCard? selectedFlashCard;
         // CRUD:
+        public static void appendToTodaysFile ()
+        {
+            string filePath = App.appRootPath + "todays.txt";
+            using (StreamWriter writer = new StreamWriter(filePath, true)) // Set append mode to true
+            {
+                writer.WriteLine(TableManagerWindow.questionBox.Text);
+                writer.WriteLine(TableManagerWindow.answerBox.Text);
+                writer.WriteLine("—————————————————————");
+            }
+        }
         public static void CreateQuestion ()
         {
-            
+            appendToTodaysFile();
             using (SQLiteConnection conn = new(App.dbPath))
             {
                 string timeLine_string = TimeLineFunctions.InitATimeLine(out DateTime nextDay);

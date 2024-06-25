@@ -125,8 +125,26 @@ namespace WpfApp1.FlashCardApp
                 case "createPdf":
                     CreatePdf();
                     break;
+                case "TodaysFCsBtn":
+                    OpenTodaysFCs();
+                    break;
                 
             }
+        }
+        void OpenTodaysFCs ()
+        {
+            var process = new Process();
+            string command = "/C notepad.exe \"" + App.appRootPath + "\\todays.txt\"";
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = command,
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+            process.StartInfo = startInfo;
+            process.Start();
+            process.Close();
         }
         void CreatePdf ()
         {

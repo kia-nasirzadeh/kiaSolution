@@ -114,8 +114,14 @@
                         Content="createPDF" 
                         Margin="0 0 10 0"
                         Padding="5" IsDefault="True"/>
+                <Button DockPanel.Dock="Right" x:Name="TodaysFCsBtn"
+                        Foreground="Black"
+                        FontSize="20"
+                        Content="TodaysFCs" 
+                        Margin="0 0 10 0"
+                        Padding="5" IsDefault="True" Background="#FFDAFF00"/>
                 <Button DockPanel.Dock="Right" x:Name="abDirBtn"
-                        Content="answerBox Direction" 
+                        Content="answerBox Direction"
                         Margin="0 0 10 0"
                         Padding="5"/>
                 <Button DockPanel.Dock="Right" x:Name="qbDirBtn"
@@ -136,49 +142,49 @@
             <ListView x:Name="questionsListView"
                           Background="{StaticResource faded2}"
                           SelectionChanged="TableManagerSelectionChanged">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="BorderBrush" Value="{StaticResource faded}"/>
-                            <Setter Property="BorderThickness" Value="2 0 0 0"/>
-                            <Setter Property="Background" Value="black"/>
-                            <Setter Property="Foreground" Value="white"/>
-                            <Setter Property="Margin" Value="0 0 0 5"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            <Setter Property="MaxHeight" Value="45" />
-                            <Setter Property="VerticalContentAlignment" Value="Top"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#5e5e5e"/>
-                                    <Setter Property="Foreground" Value="white"/>
-                                </Trigger>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#262626"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.View>
-                        <GridView>
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="{StaticResource faded2}" />
-                                    <Setter Property="Foreground" Value="white" />
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn x:Name="questionCol" Header="Question" DisplayMemberBinding="{Binding Question}"/>
-                            <GridViewColumn x:Name="answerCol" Header="Answer" DisplayMemberBinding="{Binding Answer}" />
-                            <GridViewColumn x:Name="dateCol" Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
-                            <GridViewColumn x:Name="operationCol" Header="Operations">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="edit" Click="EditBtnClicked"
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="BorderBrush" Value="{StaticResource faded}"/>
+                        <Setter Property="BorderThickness" Value="2 0 0 0"/>
+                        <Setter Property="Background" Value="black"/>
+                        <Setter Property="Foreground" Value="white"/>
+                        <Setter Property="Margin" Value="0 0 0 5"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="MaxHeight" Value="45" />
+                        <Setter Property="VerticalContentAlignment" Value="Top"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#5e5e5e"/>
+                                <Setter Property="Foreground" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#262626"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Background" Value="{StaticResource faded2}" />
+                                <Setter Property="Foreground" Value="white" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn x:Name="questionCol" Header="Question" DisplayMemberBinding="{Binding Question}"/>
+                        <GridViewColumn x:Name="answerCol" Header="Answer" DisplayMemberBinding="{Binding Answer}" />
+                        <GridViewColumn x:Name="dateCol" Header="last modify" DisplayMemberBinding="{Binding DateModifiedToShow}" />
+                        <GridViewColumn x:Name="operationCol" Header="Operations">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="edit" Click="EditBtnClicked"
                                                 Padding="5"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 </Window>
